@@ -1,0 +1,16 @@
+catboost
+h5py
+joblib
+matplotlib
+numpy
+pandas
+pyproj
+PyQt5
+rasterio
+scikit-learn
+scipy
+seaborn
+shap
+torch
+tqdm
+xgboost

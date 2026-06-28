@@ -1,0 +1,14 @@
+/data/
+/results/
+/docs/
+/code/figure_reproduction/
+
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+.DS_Store
+Thumbs.db
+
+*.log
+catboost_info/
