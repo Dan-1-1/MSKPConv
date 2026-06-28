@@ -21,9 +21,3 @@ models/
   catboost/                  Region-specific CatBoost inversion models
 requirements.txt             Python package requirements
 ```
-
-## Notes
-
-- Model weights are included directly in the repository because each file is below GitHub's 100 MB single-file limit.
-- The original local reviewer package also contains data and result products, but those directories are intentionally excluded from this GitHub repository.
-- Paths in the scripts are organized relative to the release package where possible; update local data paths before rerunning full experiments.
