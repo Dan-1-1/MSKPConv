@@ -41,11 +41,6 @@ class PreprocessCache:
     def __init__(self, x_norm, z_norm):
         self.x_norm = x_norm
         self.z_norm = z_norm
-
-        depth = torch.clamp(-z_norm, min=0.0)
-        self.pull_factor = torch.clamp(1.0 + depth / 2.0, max=20.0)
-        self.pf_sq = (self.pull_factor**2).unsqueeze(1)
-        self.max_pf = torch.max(self.pull_factor).item()
         self.cache = {}
 
     def get_space_and_knn(self, sx, sz, required_k):
@@ -68,21 +63,18 @@ class PreprocessCache:
 def compute_multi_aspect_density_gpu(x_norm, z_norm, configs, cache: PreprocessCache):
     """Compute multi-scale density features in anisotropically scaled spaces."""
     density_features = []
-    pf_sq = cache.pf_sq
-    max_pf = cache.max_pf
 
     for radius, sx, sz in configs:
-        num_neighbors = min(int(radius * 15 * max_pf), 150)
+        num_neighbors = min(int(radius * 15), 150)
         num_neighbors = max(1, num_neighbors)
         p_scaled, indices = cache.get_space_and_knn(sx, sz, num_neighbors)
 
         neighbors = p_scaled[indices]
         curr_p = p_scaled.unsqueeze(1)
         raw_dist_sq = torch.sum((neighbors - curr_p) ** 2, dim=2)
-        pulled_dist_sq = raw_dist_sq / pf_sq
-        mask = pulled_dist_sq <= radius**2
+        mask = raw_dist_sq <= radius**2
 
-        gaussian_weight = torch.exp(-pulled_dist_sq / 2.0)
+        gaussian_weight = torch.exp(-raw_dist_sq / 2.0)
         rho_i = torch.sum(gaussian_weight * mask.float(), dim=1)
         density_features.append(rho_i)
 
@@ -93,23 +85,20 @@ def compute_directional_asymmetry_gpu(x_norm, z_norm, configs, cache: Preprocess
     """Compute multi-scale vertical and horizontal asymmetry from density-style neighborhoods."""
     vertical_asymmetry_features = []
     horizontal_asymmetry_features = []
-    pf_sq = cache.pf_sq
-    max_pf = cache.max_pf
     vertical_margins = (0.05, 0.10, 0.15, 0.20)
     horizontal_margins = (0.5, 1.0, 1.5, 2.0)
 
     for scale_idx, (radius, sx, sz) in enumerate(configs):
-        num_neighbors = min(int(radius * 15 * max_pf), 150)
+        num_neighbors = min(int(radius * 15), 150)
         num_neighbors = max(1, num_neighbors)
         p_scaled, indices = cache.get_space_and_knn(sx, sz, num_neighbors)
 
         neighbors = p_scaled[indices]
         curr_p = p_scaled.unsqueeze(1)
         raw_dist_sq = torch.sum((neighbors - curr_p) ** 2, dim=2)
-        pulled_dist_sq = raw_dist_sq / pf_sq
-        mask = pulled_dist_sq <= radius**2
+        mask = raw_dist_sq <= radius**2
 
-        weights = torch.exp(-pulled_dist_sq / 2.0) * mask.float()
+        weights = torch.exp(-raw_dist_sq / 2.0) * mask.float()
         weights_norm = weights / (torch.sum(weights, dim=1, keepdim=True) + 1e-6)
 
         neighbors_x = x_norm[indices]
@@ -139,31 +128,27 @@ def extract_knn_statistical_features_gpu(x_norm, z_norm, configs, cache: Preproc
     lofe_features = []
     z_std_features = []
 
-    pull_factor = cache.pull_factor
-    pf_sq = cache.pf_sq
-
     for k, sx, sz in configs:
         p_scaled, indices = cache.get_space_and_knn(sx, sz, k)
 
         neighbors_scaled = p_scaled[indices]
         curr_p_scaled = p_scaled.unsqueeze(1)
         raw_dist_sq = torch.sum((neighbors_scaled - curr_p_scaled) ** 2, dim=2)
-        pulled_dist_sq = raw_dist_sq / pf_sq
 
-        weights = torch.exp(-pulled_dist_sq / 2.0)
+        weights = torch.exp(-raw_dist_sq / 2.0)
         weights_norm = weights / (torch.sum(weights, dim=1, keepdim=True) + 1e-6)
 
         neighbors_z = z_norm[indices]
         weighted_mean_z = torch.sum(neighbors_z * weights_norm, dim=1)
         z_diff_k = z_norm - weighted_mean_z
-        z_diff_features.append(z_diff_k / torch.sqrt(pull_factor))
+        z_diff_features.append(z_diff_k)
 
         z_centered = neighbors_z - weighted_mean_z.unsqueeze(1)
         weighted_var_z = torch.sum((z_centered**2) * weights_norm, dim=1)
-        z_std_features.append(torch.sqrt(weighted_var_z + 1e-8) / pull_factor)
+        z_std_features.append(torch.sqrt(weighted_var_z + 1e-8))
 
-        pulled_dists = torch.sqrt(pulled_dist_sq + 1e-8)
-        weighted_mean_dist = torch.sum(pulled_dists * weights_norm, dim=1)
+        raw_dists = torch.sqrt(raw_dist_sq + 1e-8)
+        weighted_mean_dist = torch.sum(raw_dists * weights_norm, dim=1)
         lofe_features.append(-weighted_mean_dist)
 
     return z_diff_features, lofe_features, z_std_features
