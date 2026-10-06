@@ -80,22 +80,18 @@ def derive_metrics_from_cm(cm):
     recalls = []
     f1s = []
     ious = []
-    accuracies = []
     for i in range(cm.shape[0]):
         tp = cm[i, i]
         fp = cm[:, i].sum() - tp
         fn = cm[i, :].sum() - tp
-        tn = total - tp - fp - fn
         precision = tp / max(tp + fp, 1.0)
         recall = tp / max(tp + fn, 1.0)
         f1 = 2.0 * precision * recall / max(precision + recall, 1e-12)
         iou = tp / max(tp + fp + fn, 1.0)
-        accuracy = (tp + tn) / total if total > 0 else 0.0
         precisions.append(float(precision))
         recalls.append(float(recall))
         f1s.append(float(f1))
         ious.append(float(iou))
-        accuracies.append(float(accuracy))
 
     return {
         "OA": oa,
@@ -104,7 +100,6 @@ def derive_metrics_from_cm(cm):
         "recall": recalls,
         "f1": f1s,
         "iou": ious,
-        "accuracy": accuracies,
     }
 
 
@@ -478,7 +473,7 @@ def main():
         f1_b = class_f1s[3] if len(class_f1s) > 3 else 0.0
         val_oa = val_stats["OA"]
         val_miou = val_stats["mIoU"]
-        seabed_acc = val_stats["accuracy"][3] if len(val_stats["accuracy"]) > 3 else 0.0
+        seabed_acc = val_stats["recall"][3] if len(val_stats["recall"]) > 3 else 0.0
         seabed_precision = val_stats["precision"][3] if len(val_stats["precision"]) > 3 else 0.0
         seabed_recall = val_stats["recall"][3] if len(val_stats["recall"]) > 3 else 0.0
         seabed_iou = val_stats["iou"][3] if len(val_stats["iou"]) > 3 else 0.0
@@ -554,6 +549,23 @@ def main():
     report, cm = compute_metrics(test_preds, test_labels)
     logger.info("\n%s", report)
     logger.info("\n%s", cm)
+
+    test_metrics = derive_metrics_from_cm(cm)
+    test_metrics.update(
+        {
+            "loss": float(test_loss),
+            "accuracy": float(test_acc),
+            "macro_f1": float(test_f1),
+            "class_names": list(Config.CLASS_NAMES),
+            "confusion_matrix": np.asarray(cm, dtype=int).tolist(),
+            "classification_report": report,
+        }
+    )
+    with open(os.path.join(Config.PREDICTION_SAVE_DIR, "test_metrics.json"), "w", encoding="utf-8") as f:
+        json.dump(test_metrics, f, indent=2)
+    pd.DataFrame(cm, index=Config.CLASS_NAMES, columns=Config.CLASS_NAMES).to_csv(
+        os.path.join(Config.PREDICTION_SAVE_DIR, "confusion_matrix.csv")
+    )
 
     plot_training_curves(history, save_dir=Config.SAVE_DIR_PLOT)
     test_files = glob.glob(os.path.join(Config.TEST_DATA_DIR, "*.csv"))

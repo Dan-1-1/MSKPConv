@@ -1,4 +1,4 @@
-﻿import math
+import math
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -205,7 +205,7 @@ class MultiScaleFixedStripKPBlock(nn.Module):
             radius=radius * 2.0,
             sigma=radius * 0.4,
             metric_scale=(1 / 10, 2.0),
-            rect_rows=2,
+            rect_rows=3,
             rect_width=0.06,
         )
         self.kpconv_r3 = FixedStripKPConv(
@@ -215,7 +215,7 @@ class MultiScaleFixedStripKPBlock(nn.Module):
             radius=radius * 3.0,
             sigma=radius * 0.6,
             metric_scale=(1 / 15, 2.0),
-            rect_rows=3,
+            rect_rows=4,
             rect_width=0.07,
         )
         self.kpconv_r4 = FixedStripKPConv(
@@ -225,7 +225,7 @@ class MultiScaleFixedStripKPBlock(nn.Module):
             radius=radius * 4.0,
             sigma=radius * 0.8,
             metric_scale=(1 / 20, 4.0),
-            rect_rows=3,
+            rect_rows=5,
             rect_width=0.08,
         )
 

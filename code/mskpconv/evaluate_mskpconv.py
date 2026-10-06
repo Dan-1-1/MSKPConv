@@ -34,5 +34,5 @@ def run_standalone_test(model_path="best_model.pth"):
 
 
 if __name__ == "__main__":
-    WEIGHT_FILE = r"/root/autodl-tmp/KPConv_new_GPU/Model_Checkpoints/best_model.pth"
+    WEIGHT_FILE = os.path.join(Config.MODEL_SAVE_DIR, "best_model.pth")
     run_standalone_test(model_path=WEIGHT_FILE)
