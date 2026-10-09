@@ -1,0 +1,5 @@
+Dataset,Tracks,PhotonCount_Available,Tracks_with_photon_counts,GeographicRegions
+Train,170,7797778,162,coordinate extents where source CSV is present
+Val,30,1979179,24,coordinate extents where source CSV is present
+Test,20,917487,17,coordinate extents where source CSV is present
+Total,220,10694444,203,coordinate extents where source CSV is present

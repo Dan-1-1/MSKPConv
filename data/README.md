@@ -1,6 +1,8 @@
 # ATL03 dataset metadata
 
-The renamed metadata index is `ATL03_Track_Metadata.csv`. It contains one row for each of the 220 labeled ATL03 track CSV files, including split, ATL03 release/version, acquisition date, reference ground track (RGT), and orbital cycle. The filename-derived acquisition dates span 2018-10-14 to 2025-04-26; the study documentation describes the planned acquisition window as 2018–2026. The index records the source values and therefore shows that the current collection contains Releases 005, 006, and 007 (not Release 007 exclusively).
+`ATL03_Track_Metadata.csv` contains one row for each of the 220 labeled ATL03 track CSV files. It records split, ATL03 release/version, UTC acquisition date/time, reference ground track (RGT), orbital cycle, photon count, and each track's latitude/longitude extent. The filename-derived acquisition dates span 2018-10-14 to 2025-04-26; the study documentation describes the planned acquisition window as 2018–2026. The current collection contains Releases 005, 006, and 007, rather than Release 007 exclusively.
+
+`ATL03_Split_Summary.csv` reports the 220-track split totals. Photon counts are counted from labeled CSV rows when the corresponding source CSV is present in the cloned repository. Seventeen index entries are `subsetted` names without a matching source CSV in this checkout, so their photon count and coordinate extent are explicitly marked unavailable rather than treated as zero.
 
 | Field | Definition |
 |---|---|
@@ -10,20 +12,24 @@ The renamed metadata index is `ATL03_Track_Metadata.csv`. It contains one row fo
 | `AcquisitionDate` / `GranuleDateTime` | UTC acquisition date/time parsed from the granule ID |
 | `RGT` / `ReferenceGroundTrack` | Reference ground track number |
 | `Cycle` | ICESat-2 repeat cycle |
+| `PhotonCount` | Number of data rows in the labeled track CSV, or an explicit unavailable marker |
+| `LatitudeMin` / `LatitudeMax` | Track latitude range in degrees |
+| `LongitudeMin` / `LongitudeMax` | Track longitude range in degrees |
+| `GeographicExtent` | Human-readable coordinate extent |
 
 ## Ten regional DEM sites
 
-The following table is the recommended companion table for the manuscript. The `Region` and `CSV files` cells must be filled from the study's authoritative ten-site map/region list; the metadata values should be copied from `ATL03_Track_Metadata.csv` rather than inferred from a site name. This prevents a track from being assigned to the wrong regional DEM site when a filename does not contain a place name.
+`ATL03_DEM_Region_Track_Metadata.csv` lists the ATL03 files found in the ten requested DEM regions: six numbered `Six_Regions` folders plus Florida Bay, Key Largo, Key West, and Marathon. It records every selected ATL03 filename together with release/version, RGT, cycle, acquisition date/time, source path, and coordinate tokens parsed from the filename.
 
-| Region | CSV files used | ATL03 release/version | RGT | Cycle | Acquisition date(s) (UTC) |
-|---|---|---|---|---|---|
-| Region 1 | To be mapped from the ten-site list | See metadata index | See metadata index | See metadata index | See metadata index |
-| Region 2 | To be mapped from the ten-site list | See metadata index | See metadata index | See metadata index | See metadata index |
-| Region 3 | To be mapped from the ten-site list | See metadata index | See metadata index | See metadata index | See metadata index |
-| Region 4 | To be mapped from the ten-site list | See metadata index | See metadata index | See metadata index | See metadata index |
-| Region 5 | To be mapped from the ten-site list | See metadata index | See metadata index | See metadata index | See metadata index |
-| Region 6 | To be mapped from the ten-site list | See metadata index | See metadata index | See metadata index | See metadata index |
-| Region 7 | To be mapped from the ten-site list | See metadata index | See metadata index | See metadata index | See metadata index |
-| Region 8 | To be mapped from the ten-site list | See metadata index | See metadata index | See metadata index | See metadata index |
-| Region 9 | To be mapped from the ten-site list | See metadata index | See metadata index | See metadata index | See metadata index |
-| Region 10 | To be mapped from the ten-site list | See metadata index | See metadata index | See metadata index | See metadata index |
+| Region | ATL03 CSV files | ATL03 release/version | RGT / Cycle | Acquisition date/time (UTC) |
+|---|---:|---|---|---|
+| 01_Anegada | 43 | See region metadata | See region metadata | See region metadata |
+| 02_Manua | 17 | See region metadata | See region metadata | See region metadata |
+| 03_Cocos_Babe_Guam | 101 | See region metadata | See region metadata | See region metadata |
+| 04_Kahului | 51 | See region metadata | See region metadata | See region metadata |
+| 05_Saipan_West_Coast | 97 | See region metadata | See region metadata | See region metadata |
+| 06_Kaneohe_Bay | 79 | See region metadata | See region metadata | See region metadata |
+| Florida Bay | 22 | See region metadata | See region metadata | See region metadata |
+| Key Largo | 150 | See region metadata | See region metadata | See region metadata |
+| Key West | 65 | See region metadata | See region metadata | See region metadata |
+| Marathon | 60 | See region metadata | See region metadata | See region metadata |
