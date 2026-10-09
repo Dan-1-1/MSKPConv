@@ -2,7 +2,7 @@
 
 `ATL03_Track_Metadata.csv` contains one row for each of the 220 labeled ATL03 track CSV files. It records split, ATL03 release/version, UTC acquisition date/time, reference ground track (RGT), orbital cycle, photon count, and each track's latitude/longitude extent. The filename-derived acquisition dates span 2018-10-14 to 2025-04-26; the study documentation describes the planned acquisition window as 2018–2026. The current collection contains Releases 005, 006, and 007, rather than Release 007 exclusively.
 
-`ATL03_Split_Summary.csv` reports the 220-track split totals. Photon counts are counted from labeled CSV rows when the corresponding source CSV is present in the cloned repository. Seventeen index entries are `subsetted` names without a matching source CSV in this checkout, so their photon count and coordinate extent are explicitly marked unavailable rather than treated as zero.
+`ATL03_Split_Summary.csv` reports the 220-track split totals. Photon counts are counted from labeled CSV rows. The 17 former `subsetted` entries were recovered from the server's Train/Val/Test folders and added to the repository; their metadata now contains measured photon counts and coordinate extents. Their server source files are Release 005, even though the historical index aliases contained `_007_`; the metadata records the recovered server release to avoid misreporting the product version.
 
 | Field | Definition |
 |---|---|
@@ -12,7 +12,7 @@
 | `AcquisitionDate` / `GranuleDateTime` | UTC acquisition date/time parsed from the granule ID |
 | `RGT` / `ReferenceGroundTrack` | Reference ground track number |
 | `Cycle` | ICESat-2 repeat cycle |
-| `PhotonCount` | Number of data rows in the labeled track CSV, or an explicit unavailable marker |
+| `PhotonCount` | Number of data rows in the labeled track CSV |
 | `LatitudeMin` / `LatitudeMax` | Track latitude range in degrees |
 | `LongitudeMin` / `LongitudeMax` | Track longitude range in degrees |
 | `GeographicExtent` | Human-readable coordinate extent |
