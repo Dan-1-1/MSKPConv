@@ -1,5 +1,5 @@
-Dataset,Tracks,PhotonCount,GeographicRegions_1deg
-Train,170,8079137,88
-Val,30,2078477,30
-Test,20,963253,20
-Total,220,11120867,133
+Dataset,Tracks,Photons,Geographic_regions,Occupied_1deg_grid_cells
+Train,170,8079137,105,88
+Val,30,2078477,30,30
+Test,20,963253,20,20
+Total,220,11120867,153,133

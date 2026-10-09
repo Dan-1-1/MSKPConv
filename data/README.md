@@ -4,6 +4,8 @@
 
 `ATL03_Split_Summary.csv` reports the 220-track split totals. Photon counts are counted from labeled CSV rows. The 17 former `subsetted` entries were recovered from the server's Train/Val/Test folders and added to the repository; their metadata now contains measured photon counts and coordinate extents. Their server source files are Release 005, even though the historical index aliases contained `_007_`; the metadata records the recovered server release to avoid misreporting the product version.
 
+`Geographic_regions` is based on `Region_ID`, not on a fixed 1° grid. The reproducible assignment rule uses a filename-derived geographic name when available. For unnamed tracks, centers within 10 km are grouped into the same coordinate-defined region. The 1° grid count is retained in `Occupied_1deg_grid_cells` as an auxiliary coverage statistic. Two region IDs occur in more than one split, so the table must not be described as proving strict geographic disjointness without an additional exclusion or buffer rule.
+
 | Field | Definition |
 |---|---|
 | `FileName` | Labeled photon CSV filename |
@@ -16,6 +18,9 @@
 | `LatitudeMin` / `LatitudeMax` | Track latitude range in degrees |
 | `LongitudeMin` / `LongitudeMax` | Track longitude range in degrees |
 | `GeographicExtent` | Human-readable coordinate extent |
+| `Region_ID` | Stable geographic-region identifier used in the summary table |
+| `Region_Label` | Filename-derived name or coordinate-defined region label |
+| `Region_Assignment_Rule` | Rule used to assign the track to a geographic region |
 
 ## Ten regional DEM sites
 
