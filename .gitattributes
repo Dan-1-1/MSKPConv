@@ -1,0 +1,10 @@
+# Keep checksum-bearing split manifests byte-identical across platforms.
+splits/**/*.csv text eol=lf
+
+# Serialized models and Parquet artifacts must never undergo text conversion.
+*.pt binary
+*.pth binary
+*.joblib binary
+*.cbm binary
+*.parquet binary
+models/**/*.json binary
