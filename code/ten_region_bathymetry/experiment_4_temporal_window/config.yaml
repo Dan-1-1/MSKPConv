@@ -1,0 +1,29 @@
+experiment_id: temporal_window_robustness_v1
+method: Proposed
+primary_regressor: ConvexBlend
+primary_reference: CUDEM
+
+# Natural-sample analysis: all eligible track groups are retained. Three
+# seeds repeat the track-level validation split and model initialization.
+natural_windows_days: [7, 15, 30, 45, 60, 90, 180]
+
+# Equal-sample analysis: every window is reduced to the 7-day track-level
+# training capacity, preserving region x depth x season composition.
+equal_sample_windows_days: [7, 15, 30, 45, 60, 90, 180]
+equal_sample_reference_window_days: 7
+repeat_seeds: [42, 43, 44]
+# One pre-defined, spatially isolated split is used for every task. This is a
+# fixed holdout evaluation, not five-fold cross-validation.
+fixed_test_fold: 0
+validation_fraction: 0.10
+spatial_buffer_m: 500.0
+depth_bins_m: [0, 2, 5, 10, 15, 20, 30, 50]
+season_scheme: hemisphere_meteorological
+
+# The untouched Proposed test rows from the main experiment define identical
+# coordinates/features for every window. CUDEM is sampled once at these points.
+fixed_test_source: main_experiment_proposed_outer_fold
+save_models: false
+save_test_predictions: false
+refit_base_models_on_full_training_data: true
+resume: true

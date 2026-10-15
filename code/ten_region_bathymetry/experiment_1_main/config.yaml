@@ -1,0 +1,181 @@
+workspace_root: H:/ATL24/PhisicKPConvNet
+data_root: H:/ATL24/PhisicKPConvNet/validation_area/data
+output_root: H:/ATL24/PhisicKPConvNet/outputs/ten_region_bathymetry
+# Large ConvexBlend checkpoints (especially Random Forest) are stored on the
+# roomier G drive; predictions, metrics and reports remain under output_root.
+model_output_root: G:/ATL24_ConvexBlend_Checkpoints/ten_region_bathymetry
+seed: 42
+# Full-scene protocol: the matcher and external-reference evaluator do not
+# impose an upper depth cut.  Only non-negative, finite bathymetry is kept.
+depth_match_min_m: 0.0
+depth_match_max_m: null
+evaluation_depth_min_m: 0.0
+evaluation_depth_max_m: null
+prediction_depth_max_m: null
+training_mode: pooled
+# The Proposed method defines the held-out track/scene coordinates used for
+# the primary equal-support CUDEM comparison.  Every method is trained with a
+# 500 m exclusion around these same anchor positions.
+shared_test_anchor_method: Proposed
+primary_evaluation_reference: CUDEM
+# Prepared Parquet files are run-specific outputs.  This full-depth protocol
+# rebuilds every method from the source CSVs so the former 0–20 m filter cannot
+# leak into the new run.
+reuse_prepared_methods: false
+scene_match_days: 45
+# Spatial exclusion radius around every outer-fold test sample. 500 m keeps
+# nearby along-track/adjacent-pixel observations out of training while
+# retaining more independent test tracks than the previous 1 km protocol.
+buffer_m: 500.0
+n_folds: 5
+early_stop_fraction: 0.10
+# A fold with fewer rows is retained for audit but is not used for model
+# fitting/early stopping. This prevents tiny validation sets from selecting
+# the first CatBoost tree by noise.
+min_train_rows: 500
+min_validation_rows: 100
+bootstrap_reps: 1000
+features: [B02, B03, B04, B08, NDWI, Blue_Green_LogRatio, Blue_Red_LogRatio, Green_Red_LogRatio]
+primary_regressor: ConvexBlend
+convex_blend:
+  base_regressors: [LightweightCNN, MLP, CatBoost, XGBoost, RandomForest]
+  objective: rmse
+catboost:
+  iterations: 1000
+  depth: 6
+  learning_rate: 0.03
+  l2_leaf_reg: 1
+  random_strength: 0.5
+  bagging_temperature: 0.2
+  border_count: 254
+  random_seed: 42
+  early_stopping_rounds: 50
+  loss_function: RMSE
+xgboost:
+  n_estimators: 500
+  max_depth: 6
+  learning_rate: 0.03
+  subsample: 0.8
+  colsample_bytree: 0.8
+  reg_lambda: 1.0
+  objective: reg:squarederror
+  tree_method: hist
+random_forest:
+  n_estimators: 300
+  max_features: 0.8
+  min_samples_leaf: 2
+  n_jobs: -1
+mlp:
+  hidden_layer_sizes: [128, 64]
+  alpha: 0.0001
+  learning_rate_init: 0.001
+  batch_size: 1024
+  max_iter: 300
+  early_stopping: true
+  validation_fraction: 0.1
+  n_iter_no_change: 25
+lightweight_cnn:
+  image_patch_size: 11
+  conv_channels: [16, 32]
+  kernel_size: 3
+  dense_units: 16
+  dropout: 0.10
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  batch_size: 2048
+  epochs: 150
+  patience: 20
+  min_delta: 0.00001
+  device: cpu
+  num_threads: 4
+regions:
+  - id: florida_bay
+    name: Florida Bay
+    csv_root: Florida Bay/Predictions_1
+    s2_root: Florida Bay/Sentinel-2/Final
+    cudem: Florida Bay/Cudem/Florida_Bay_cudem.tif
+    proposed_suffix: Proposed_method
+    local_crs: EPSG:32617
+    representative_scene: S2_Mosaic_202601_Cropped_CloudMasked
+    tide_stations: [8723970, 8723214, 8724580]
+  - id: key_largo
+    name: Key Largo
+    csv_root: Key Largo/Predictions_1
+    s2_root: Key Largo/Sentinel-2/Final
+    cudem: Key Largo/Cudem/Key_Largo_cudem.tif
+    proposed_suffix: Proposed_method
+    local_crs: EPSG:32617
+    representative_scene: S2_Mosaic_202512_Cropped_CloudMasked
+    tide_stations: [8723970, 8723214, 8724580]
+  - id: key_west
+    name: Key West
+    csv_root: Key West/Predictions_1
+    s2_root: Key West/Sentinel-2/Final
+    cudem: Key West/Cudem/Key_West_cudem.tif
+    proposed_suffix: Proposed_method
+    local_crs: EPSG:32617
+    representative_scene: S2_Mosaic_202511_Cropped_CloudMasked
+    tide_stations: [8724580, 8723970, 8723214]
+  - id: marathon
+    name: Marathon
+    csv_root: Marathon/Predictions_1
+    s2_root: Marathon/Sentinel-2/Final
+    cudem: Marathon/Cudem/Marathon_cudem.tif
+    proposed_suffix: Proposed_method
+    local_crs: EPSG:32617
+    representative_scene: S2_Mosaic_202603_Cropped_CloudMasked
+    tide_stations: [8723970, 8724580, 8723214]
+  - id: anegada
+    name: Anegada
+    csv_root: Six_Regions/01_Anegada/Predictions_1/csv
+    s2_root: Six_Regions/01_Anegada/Sentinel-2/Final
+    cudem: Six_Regions/01_Anegada/Cudem/01_Anegada_cudem.tif
+    proposed_suffix: SKPConv
+    local_crs: EPSG:32620
+    representative_scene: S2_Mosaic_202511_Cropped_CloudMasked
+    tide_stations: [9751381, 9751639, 9752235, 9751364]
+  - id: tutuila
+    name: Tutuila
+    csv_root: Six_Regions/07_Tutuila_Pala_Lagoon/Predictions_1/csv
+    s2_root: Six_Regions/07_Tutuila_Pala_Lagoon/Sentinel-2/Final
+    cudem: Six_Regions/07_Tutuila_Pala_Lagoon/Cudem/07_Tutuila_Pala_Lagoon_cudem.tif
+    proposed_suffix: SKPConv
+    local_crs: EPSG:32702
+    representative_scene: S2_Mosaic_202603_Cropped_CloudMasked
+    tide_stations: [1770000]
+  - id: cocos_guam
+    name: Cocos/Guam
+    csv_root: Six_Regions/03_Cocos_Babe_Guam/Predictions_1/csv
+    s2_root: Six_Regions/03_Cocos_Babe_Guam/Sentinel-2/Final
+    cudem: Six_Regions/03_Cocos_Babe_Guam/Cudem/03_Cocos_Babe_Guam_cudem.tif
+    proposed_suffix: SKPConv
+    local_crs: EPSG:32655
+    representative_scene: S2_Mosaic_202510_Cropped_CloudMasked
+    tide_stations: [1630000, 1631428]
+  - id: kahului
+    name: Kahului
+    csv_root: Six_Regions/04_Kahului/Predictions_1/csv
+    s2_root: Six_Regions/04_Kahului/Sentinel-2/Final
+    cudem: Six_Regions/04_Kahului/Cudem/04_Kahului_cudem.tif
+    proposed_suffix: SKPConv
+    local_crs: EPSG:32604
+    representative_scene: S2_Mosaic_202602_Cropped_CloudMasked
+    tide_stations: [1615680, 1617433, 1612480]
+  - id: saipan
+    name: Saipan West Coast
+    csv_root: Six_Regions/05_Saipan_West_Coast/Predictions_1/csv
+    s2_root: Six_Regions/05_Saipan_West_Coast/Sentinel-2/Final
+    cudem: Six_Regions/05_Saipan_West_Coast/Cudem/05_Saipan_West_Coast_cudem.tif
+    proposed_suffix: SKPConv
+    local_crs: EPSG:32655
+    representative_scene: S2_Mosaic_202312_Cropped_CloudMasked
+    tide_stations: [1631428, 1630000]
+  - id: kaneohe
+    name: Kaneohe Bay
+    csv_root: Six_Regions/06_Kaneohe_Bay/Predictions_1/csv
+    s2_root: Six_Regions/06_Kaneohe_Bay/Sentinel-2/Final
+    cudem: Six_Regions/06_Kaneohe_Bay/Cudem/06_Kaneohe_Bay_cudem.tif
+    proposed_suffix: SKPConv
+    local_crs: EPSG:32604
+    representative_scene: S2_Mosaic_202512_Cropped_CloudMasked
+    tide_stations: [1612480, 1612340, 1612401]

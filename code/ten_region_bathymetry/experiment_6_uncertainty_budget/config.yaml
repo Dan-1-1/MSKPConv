@@ -1,0 +1,24 @@
+experiment_id: proposed_chain_cudem_conditional_v1
+output_root: G:/ATL24_ConvexBlend_Checkpoints/ten_region_bathymetry_uncertainty
+classification_metrics: H:/ATL24/PhisicKPConvNet/Model/remote_seed_experiments/downloaded_results/final_report/seed_level_metrics.csv
+classification_model: MSKPConv
+sensitivity_points: H:/ATL24/PhisicKPConvNet/outputs/refraction_ransac_sensitivity_20261010/point_diagnostics.csv
+selected_tracks: H:/ATL24/PhisicKPConvNet/Plot/Manuscript_Figures_Tables/Figure05_ICESat2_Bathymetric_Validation/selected_tracks_for_matching_training.csv
+oof_prediction_glob: H:/ATL24/PhisicKPConvNet/outputs/ten_region_bathymetry/{run_id}/model_selection/regressor_comparison_v1/predictions/pooled/Proposed/ConvexBlend/fold_*.parquet
+scene_root: G:/ATL24_ConvexBlend_Checkpoints/ten_region_bathymetry_scene_maps/{run_id}/representative_scene_cudem_all_ten_v1
+depth_bins: 8
+minimum_bin_rows: 100
+tide_months_per_region: 3
+noaa_timeout_seconds: 45
+regions:
+  florida_bay: {name: Florida Bay, stations: [8723970, 8723214, 8724580], tide_mode: observed_station_transfer}
+  key_largo: {name: Key Largo, stations: [8723970, 8723214, 8724580], tide_mode: observed_station_transfer}
+  key_west: {name: Key West, stations: [8724580, 8723970, 8723214], tide_mode: observed_station_transfer}
+  marathon: {name: Marathon, stations: [8723970, 8724580, 8723214], tide_mode: observed_station_transfer}
+  anegada: {name: Anegada, stations: [9751381, 9751639, 9752235, 9751364], tide_mode: observed_station_transfer}
+  tutuila: {name: Tutuila, stations: [1770000], tide_mode: observed_minus_prediction}
+  cocos_guam: {name: Cocos/Guam, stations: [1630000, 1631428], tide_mode: observed_station_transfer}
+  kahului: {name: Kahului, stations: [1615680, 1617433, 1612480], tide_mode: observed_station_transfer}
+  saipan: {name: Saipan West Coast, stations: [1631428, 1630000], tide_mode: observed_station_transfer}
+  kaneohe: {name: Kaneohe Bay, stations: [1612480, 1612340, 1612401], tide_mode: observed_station_transfer}
+

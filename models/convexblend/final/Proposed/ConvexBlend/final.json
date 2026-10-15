@@ -1,0 +1,37 @@
+{
+  "type": "full_sample_final_convex_blend",
+  "method": "Proposed",
+  "fit_split": "all_finite_ten_region_samples",
+  "fit_rows": 132916,
+  "region_rows": {
+    "anegada": 967,
+    "cocos_guam": 4991,
+    "florida_bay": 11992,
+    "kahului": 1034,
+    "kaneohe": 4858,
+    "key_largo": 57235,
+    "key_west": 22900,
+    "marathon": 14702,
+    "saipan": 14066,
+    "tutuila": 171
+  },
+  "base_regressors": [
+    "LightweightCNN",
+    "MLP",
+    "CatBoost",
+    "XGBoost",
+    "RandomForest"
+  ],
+  "weights": [
+    0.6063225251303146,
+    0.2874520262898731,
+    0.042072249533687385,
+    0.0029917914784633147,
+    0.061161407567661696
+  ],
+  "weight_source": "mean_of_outer_fold_validation_weights",
+  "source_folds": 5,
+  "catboost_iterations": 699,
+  "cnn_epochs": 78,
+  "prediction_uncertainty": "not_computed"
+}

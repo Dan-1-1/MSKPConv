@@ -1,13 +1,20 @@
-/results/
-/docs/
-/code/figure_reproduction/
-
 __pycache__/
 *.py[cod]
+*.log
+.pytest_cache/
 .ipynb_checkpoints/
+catboost_info/
+
+# Raw remote-sensing inputs and generated outputs are not versioned here.
+data/
+outputs/
+results/**/*.tif
+results/**/*.png
+results/**/*.pdf
+
+# The complete ConvexBlend bundle is distributed as a GitHub Release asset.
+models/convexblend/final/Proposed/RandomForest/final.joblib
+*.zip
 
 .DS_Store
 Thumbs.db
-
-*.log
-catboost_info/

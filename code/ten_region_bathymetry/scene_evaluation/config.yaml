@@ -1,0 +1,20 @@
+experiment_id: representative_scene_cudem_all_ten_v1
+methods: [Proposed]
+# Evaluate every configured region with the same final full-sample
+# ConvexBlend model.  This is intentionally separate from the earlier
+# two-scene replacement run for Florida Bay and Tutuila.
+regions: [florida_bay, key_largo, key_west, marathon, anegada, tutuila, cocos_guam, kahului, saipan, kaneohe]
+reference: CUDEM
+support: proposed_convexblend_valid_pixels
+# Use every underwater CUDEM cell in each representative scene. There is no
+# upper-depth clipping; the scene's observed CUDEM maximum defines its range.
+depth_domain: full_scene_cudem_bathymetry
+cudem_resampling: bilinear
+cnn_chunk_size: 20000
+model_variant: final_full
+save_uncertainty: false
+save_common_mask: true
+# Large GeoTIFF products are kept off H:; metrics and figures remain beside the
+# main experiment under output_root.
+raster_output_root: G:/ATL24_ConvexBlend_Checkpoints/ten_region_bathymetry_scene_maps
+resume: true

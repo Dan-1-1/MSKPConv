@@ -1,0 +1,46 @@
+{
+  "source_parquet_files": 69,
+  "row_assignments": 724851,
+  "regions": [
+    "anegada",
+    "cocos_guam",
+    "florida_bay",
+    "kahului",
+    "kaneohe",
+    "key_largo",
+    "key_west",
+    "marathon",
+    "saipan",
+    "tutuila"
+  ],
+  "methods": [
+    "ATL24",
+    "DGCNN",
+    "KPConv",
+    "PointNeXt",
+    "PointNetPP",
+    "Proposed",
+    "Song2024"
+  ],
+  "outer_folds": 5,
+  "columns": [
+    "source_file",
+    "source_row_index",
+    "track_group_id",
+    "scene_id",
+    "img_row",
+    "img_col",
+    "region_id",
+    "method",
+    "Latitude",
+    "Longitude",
+    "fold",
+    "split_fold_0",
+    "split_fold_1",
+    "split_fold_2",
+    "split_fold_3",
+    "split_fold_4"
+  ],
+  "row_splits_sha256": "afe64987206a1e0d8c22ffc76628b8704f0c416c2770c307daf6ad42a0e35d98",
+  "track_folds_sha256": "de8d80526d3457ab96b11d2d09824191f1efc666558e3d42c9992ed80a19d435"
+}

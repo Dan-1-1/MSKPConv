@@ -1,0 +1,2242 @@
+{
+  "florida_bay": {
+    "fold_sizes": [
+      11831,
+      10512,
+      13616,
+      16406,
+      17078
+    ],
+    "methods": {
+      "PointNetPP": {
+        "0": {
+          "train": 8549,
+          "test": 1892,
+          "validation": 1311,
+          "excluded_spatial_buffer": 144
+        },
+        "1": {
+          "train": 7919,
+          "test": 2090,
+          "validation": 1287,
+          "excluded_spatial_buffer": 600
+        },
+        "2": {
+          "train": 7331,
+          "test": 2330,
+          "validation": 1665,
+          "excluded_spatial_buffer": 570
+        },
+        "3": {
+          "train": 6738,
+          "test": 2843,
+          "validation": 1430,
+          "excluded_spatial_buffer": 885
+        },
+        "4": {
+          "train": 6607,
+          "test": 2741,
+          "validation": 1665,
+          "excluded_spatial_buffer": 883
+        }
+      },
+      "PointNeXt": {
+        "0": {
+          "train": 8065,
+          "test": 1825,
+          "validation": 1261,
+          "excluded_spatial_buffer": 141
+        },
+        "1": {
+          "train": 7610,
+          "test": 1831,
+          "validation": 1297,
+          "excluded_spatial_buffer": 554
+        },
+        "2": {
+          "train": 6771,
+          "test": 2398,
+          "validation": 1620,
+          "excluded_spatial_buffer": 503
+        },
+        "3": {
+          "train": 6463,
+          "test": 2832,
+          "validation": 1145,
+          "excluded_spatial_buffer": 852
+        },
+        "4": {
+          "train": 6414,
+          "test": 2406,
+          "validation": 1620,
+          "excluded_spatial_buffer": 852
+        }
+      },
+      "KPConv": {
+        "0": {
+          "train": 7798,
+          "test": 1894,
+          "validation": 1304,
+          "excluded_spatial_buffer": 129
+        },
+        "1": {
+          "train": 7738,
+          "test": 1583,
+          "validation": 1206,
+          "excluded_spatial_buffer": 598
+        },
+        "2": {
+          "train": 6919,
+          "test": 2058,
+          "validation": 1627,
+          "excluded_spatial_buffer": 521
+        },
+        "3": {
+          "train": 5993,
+          "test": 2765,
+          "validation": 1521,
+          "excluded_spatial_buffer": 846
+        },
+        "4": {
+          "train": 5827,
+          "test": 2825,
+          "validation": 1627,
+          "excluded_spatial_buffer": 846
+        }
+      },
+      "DGCNN": {
+        "0": {
+          "train": 7710,
+          "test": 1950,
+          "validation": 1201,
+          "excluded_spatial_buffer": 161
+        },
+        "1": {
+          "train": 7534,
+          "test": 1701,
+          "validation": 1294,
+          "excluded_spatial_buffer": 493
+        },
+        "2": {
+          "train": 6441,
+          "test": 2470,
+          "validation": 1564,
+          "excluded_spatial_buffer": 547
+        },
+        "3": {
+          "train": 6464,
+          "test": 2823,
+          "validation": 877,
+          "excluded_spatial_buffer": 858
+        },
+        "4": {
+          "train": 6521,
+          "test": 2078,
+          "validation": 1564,
+          "excluded_spatial_buffer": 859
+        }
+      },
+      "ATL24": {
+        "0": {
+          "train": 5785,
+          "test": 1613,
+          "validation": 1292,
+          "excluded_spatial_buffer": 109
+        },
+        "1": {
+          "train": 6241,
+          "validation": 1183,
+          "test": 791,
+          "excluded_spatial_buffer": 584
+        },
+        "2": {
+          "train": 5766,
+          "test": 1457,
+          "validation": 1169,
+          "excluded_spatial_buffer": 407
+        },
+        "3": {
+          "train": 4609,
+          "test": 2129,
+          "validation": 1517,
+          "excluded_spatial_buffer": 544
+        },
+        "4": {
+          "train": 4283,
+          "test": 2809,
+          "validation": 1169,
+          "excluded_spatial_buffer": 538
+        }
+      },
+      "Song2024": {
+        "0": {
+          "train": 2332,
+          "test": 652,
+          "validation": 305,
+          "excluded_spatial_buffer": 28
+        },
+        "1": {
+          "train": 1807,
+          "test": 678,
+          "excluded_spatial_buffer": 439,
+          "validation": 393
+        },
+        "2": {
+          "train": 1843,
+          "validation": 666,
+          "excluded_spatial_buffer": 449,
+          "test": 359
+        },
+        "3": {
+          "train": 1749,
+          "validation": 1083,
+          "excluded_spatial_buffer": 245,
+          "test": 240
+        },
+        "4": {
+          "train": 1445,
+          "test": 1388,
+          "excluded_spatial_buffer": 244,
+          "validation": 240
+        }
+      },
+      "Proposed": {
+        "0": {
+          "train": 8522,
+          "test": 2005,
+          "validation": 1277,
+          "excluded_spatial_buffer": 188
+        },
+        "1": {
+          "train": 8209,
+          "test": 1838,
+          "validation": 1311,
+          "excluded_spatial_buffer": 634
+        },
+        "2": {
+          "train": 7241,
+          "test": 2544,
+          "validation": 1626,
+          "excluded_spatial_buffer": 581
+        },
+        "3": {
+          "train": 6790,
+          "test": 2774,
+          "validation": 1554,
+          "excluded_spatial_buffer": 874
+        },
+        "4": {
+          "train": 6661,
+          "test": 2831,
+          "validation": 1626,
+          "excluded_spatial_buffer": 874
+        }
+      }
+    },
+    "empty_methods": [],
+    "shared_test_anchor_method": "Proposed"
+  },
+  "key_largo": {
+    "fold_sizes": [
+      67408,
+      67627,
+      67505,
+      67679,
+      67629
+    ],
+    "methods": {
+      "PointNetPP": {
+        "0": {
+          "excluded_spatial_buffer": 37405,
+          "test": 11669,
+          "train": 8895,
+          "validation": 1472
+        },
+        "1": {
+          "excluded_spatial_buffer": 36919,
+          "test": 11716,
+          "train": 8690,
+          "validation": 2116
+        },
+        "2": {
+          "excluded_spatial_buffer": 36514,
+          "test": 12059,
+          "train": 8803,
+          "validation": 2065
+        },
+        "3": {
+          "excluded_spatial_buffer": 32053,
+          "train": 12839,
+          "test": 12106,
+          "validation": 2443
+        },
+        "4": {
+          "excluded_spatial_buffer": 32769,
+          "train": 12750,
+          "test": 11891,
+          "validation": 2031
+        }
+      },
+      "PointNeXt": {
+        "0": {
+          "excluded_spatial_buffer": 37831,
+          "test": 11998,
+          "train": 8998,
+          "validation": 1498
+        },
+        "1": {
+          "excluded_spatial_buffer": 37646,
+          "test": 11704,
+          "train": 8798,
+          "validation": 2177
+        },
+        "2": {
+          "excluded_spatial_buffer": 36938,
+          "test": 12205,
+          "train": 9065,
+          "validation": 2117
+        },
+        "3": {
+          "excluded_spatial_buffer": 32607,
+          "train": 12990,
+          "test": 12320,
+          "validation": 2408
+        },
+        "4": {
+          "excluded_spatial_buffer": 33185,
+          "train": 12934,
+          "test": 12098,
+          "validation": 2108
+        }
+      },
+      "KPConv": {
+        "0": {
+          "excluded_spatial_buffer": 37228,
+          "test": 11608,
+          "train": 8792,
+          "validation": 1448
+        },
+        "1": {
+          "excluded_spatial_buffer": 36896,
+          "test": 11459,
+          "train": 8594,
+          "validation": 2127
+        },
+        "2": {
+          "excluded_spatial_buffer": 36293,
+          "test": 12027,
+          "train": 8692,
+          "validation": 2064
+        },
+        "3": {
+          "excluded_spatial_buffer": 31873,
+          "train": 12713,
+          "test": 12114,
+          "validation": 2376
+        },
+        "4": {
+          "excluded_spatial_buffer": 32481,
+          "train": 12696,
+          "test": 11868,
+          "validation": 2031
+        }
+      },
+      "DGCNN": {
+        "0": {
+          "excluded_spatial_buffer": 32716,
+          "test": 10869,
+          "train": 8244,
+          "validation": 1245
+        },
+        "1": {
+          "excluded_spatial_buffer": 29329,
+          "train": 11720,
+          "test": 10367,
+          "validation": 1658
+        },
+        "2": {
+          "excluded_spatial_buffer": 32835,
+          "test": 10896,
+          "train": 7657,
+          "validation": 1686
+        },
+        "3": {
+          "excluded_spatial_buffer": 28774,
+          "train": 11464,
+          "test": 10618,
+          "validation": 2218
+        },
+        "4": {
+          "excluded_spatial_buffer": 29184,
+          "train": 11745,
+          "test": 10324,
+          "validation": 1821
+        }
+      },
+      "ATL24": {
+        "0": {
+          "excluded_spatial_buffer": 23943,
+          "test": 7417,
+          "train": 3516,
+          "validation": 512
+        },
+        "1": {
+          "excluded_spatial_buffer": 19999,
+          "test": 8098,
+          "train": 6087,
+          "validation": 1204
+        },
+        "2": {
+          "excluded_spatial_buffer": 22946,
+          "test": 6659,
+          "train": 4671,
+          "validation": 1112
+        },
+        "3": {
+          "excluded_spatial_buffer": 19221,
+          "train": 8630,
+          "test": 6252,
+          "validation": 1285
+        },
+        "4": {
+          "excluded_spatial_buffer": 20842,
+          "test": 6962,
+          "train": 6171,
+          "validation": 1413
+        }
+      },
+      "Song2024": {
+        "0": {
+          "excluded_spatial_buffer": 8677,
+          "test": 2398,
+          "train": 1896,
+          "validation": 338
+        },
+        "1": {
+          "excluded_spatial_buffer": 6096,
+          "train": 3503,
+          "test": 3297,
+          "validation": 413
+        },
+        "2": {
+          "excluded_spatial_buffer": 7219,
+          "train": 3460,
+          "test": 1967,
+          "validation": 663
+        },
+        "3": {
+          "excluded_spatial_buffer": 6316,
+          "train": 3716,
+          "test": 2673,
+          "validation": 604
+        },
+        "4": {
+          "excluded_spatial_buffer": 7064,
+          "test": 2974,
+          "train": 2710,
+          "validation": 561
+        }
+      },
+      "Proposed": {
+        "0": {
+          "excluded_spatial_buffer": 35554,
+          "test": 11449,
+          "train": 8768,
+          "validation": 1464
+        },
+        "1": {
+          "excluded_spatial_buffer": 35815,
+          "test": 10986,
+          "train": 8424,
+          "validation": 2010
+        },
+        "2": {
+          "excluded_spatial_buffer": 34995,
+          "test": 11692,
+          "train": 8559,
+          "validation": 1989
+        },
+        "3": {
+          "excluded_spatial_buffer": 30872,
+          "train": 12450,
+          "test": 11596,
+          "validation": 2317
+        },
+        "4": {
+          "excluded_spatial_buffer": 31827,
+          "train": 12060,
+          "test": 11512,
+          "validation": 1836
+        }
+      }
+    },
+    "empty_methods": [],
+    "shared_test_anchor_method": "Proposed"
+  },
+  "key_west": {
+    "fold_sizes": [
+      25111,
+      24733,
+      24842,
+      24593,
+      24743
+    ],
+    "methods": {
+      "PointNetPP": {
+        "0": {
+          "train": 9489,
+          "excluded_spatial_buffer": 6028,
+          "test": 4411,
+          "validation": 1734
+        },
+        "1": {
+          "train": 12629,
+          "test": 4122,
+          "excluded_spatial_buffer": 3374,
+          "validation": 1537
+        },
+        "2": {
+          "train": 9343,
+          "excluded_spatial_buffer": 6564,
+          "test": 4434,
+          "validation": 1321
+        },
+        "3": {
+          "train": 10311,
+          "excluded_spatial_buffer": 5566,
+          "test": 4371,
+          "validation": 1414
+        },
+        "4": {
+          "train": 8902,
+          "excluded_spatial_buffer": 7015,
+          "test": 4324,
+          "validation": 1421
+        }
+      },
+      "PointNeXt": {
+        "0": {
+          "train": 9202,
+          "excluded_spatial_buffer": 5824,
+          "test": 4205,
+          "validation": 1590
+        },
+        "1": {
+          "train": 12221,
+          "test": 3947,
+          "excluded_spatial_buffer": 3185,
+          "validation": 1468
+        },
+        "2": {
+          "train": 9144,
+          "excluded_spatial_buffer": 6267,
+          "test": 4126,
+          "validation": 1284
+        },
+        "3": {
+          "train": 10272,
+          "excluded_spatial_buffer": 4850,
+          "test": 4336,
+          "validation": 1363
+        },
+        "4": {
+          "train": 8519,
+          "excluded_spatial_buffer": 6775,
+          "test": 4207,
+          "validation": 1320
+        }
+      },
+      "KPConv": {
+        "0": {
+          "train": 9209,
+          "excluded_spatial_buffer": 5775,
+          "test": 4281,
+          "validation": 1805
+        },
+        "1": {
+          "train": 12241,
+          "test": 4011,
+          "excluded_spatial_buffer": 3336,
+          "validation": 1482
+        },
+        "2": {
+          "train": 9304,
+          "excluded_spatial_buffer": 6263,
+          "test": 4199,
+          "validation": 1304
+        },
+        "3": {
+          "train": 9926,
+          "excluded_spatial_buffer": 5475,
+          "test": 4260,
+          "validation": 1409
+        },
+        "4": {
+          "train": 8872,
+          "excluded_spatial_buffer": 6685,
+          "test": 4319,
+          "validation": 1194
+        }
+      },
+      "DGCNN": {
+        "0": {
+          "train": 9461,
+          "excluded_spatial_buffer": 5826,
+          "test": 4302,
+          "validation": 1732
+        },
+        "1": {
+          "train": 12556,
+          "test": 4063,
+          "excluded_spatial_buffer": 3304,
+          "validation": 1398
+        },
+        "2": {
+          "train": 8904,
+          "excluded_spatial_buffer": 6379,
+          "test": 4548,
+          "validation": 1490
+        },
+        "3": {
+          "train": 10646,
+          "excluded_spatial_buffer": 4959,
+          "test": 4230,
+          "validation": 1486
+        },
+        "4": {
+          "train": 8579,
+          "excluded_spatial_buffer": 7164,
+          "test": 4178,
+          "validation": 1400
+        }
+      },
+      "ATL24": {
+        "0": {
+          "train": 6579,
+          "test": 2341,
+          "excluded_spatial_buffer": 2006,
+          "validation": 978
+        },
+        "1": {
+          "train": 6807,
+          "test": 3128,
+          "excluded_spatial_buffer": 1199,
+          "validation": 770
+        },
+        "2": {
+          "train": 6843,
+          "excluded_spatial_buffer": 2222,
+          "test": 2040,
+          "validation": 799
+        },
+        "3": {
+          "train": 6764,
+          "test": 2130,
+          "excluded_spatial_buffer": 2068,
+          "validation": 942
+        },
+        "4": {
+          "train": 5038,
+          "excluded_spatial_buffer": 3760,
+          "test": 2265,
+          "validation": 841
+        }
+      },
+      "Song2024": {
+        "0": {
+          "train": 1829,
+          "excluded_spatial_buffer": 1222,
+          "test": 877,
+          "validation": 416
+        },
+        "1": {
+          "train": 2256,
+          "test": 970,
+          "excluded_spatial_buffer": 770,
+          "validation": 348
+        },
+        "2": {
+          "train": 2302,
+          "excluded_spatial_buffer": 1025,
+          "test": 675,
+          "validation": 342
+        },
+        "3": {
+          "train": 1696,
+          "excluded_spatial_buffer": 1464,
+          "test": 869,
+          "validation": 315
+        },
+        "4": {
+          "excluded_spatial_buffer": 1590,
+          "train": 1567,
+          "test": 953,
+          "validation": 234
+        }
+      },
+      "Proposed": {
+        "0": {
+          "train": 11016,
+          "excluded_spatial_buffer": 5678,
+          "test": 4694,
+          "validation": 1512
+        },
+        "1": {
+          "train": 13157,
+          "test": 4492,
+          "excluded_spatial_buffer": 3692,
+          "validation": 1559
+        },
+        "2": {
+          "train": 9820,
+          "excluded_spatial_buffer": 6933,
+          "test": 4820,
+          "validation": 1327
+        },
+        "3": {
+          "train": 11093,
+          "excluded_spatial_buffer": 5860,
+          "test": 4397,
+          "validation": 1550
+        },
+        "4": {
+          "train": 9512,
+          "excluded_spatial_buffer": 7488,
+          "test": 4497,
+          "validation": 1403
+        }
+      }
+    },
+    "empty_methods": [],
+    "shared_test_anchor_method": "Proposed"
+  },
+  "marathon": {
+    "fold_sizes": [
+      17796,
+      17842,
+      17776,
+      17749,
+      17744
+    ],
+    "methods": {
+      "PointNetPP": {
+        "0": {
+          "train": 5682,
+          "excluded_spatial_buffer": 5313,
+          "test": 2977,
+          "validation": 871
+        },
+        "1": {
+          "train": 5862,
+          "excluded_spatial_buffer": 4879,
+          "test": 2922,
+          "validation": 1180
+        },
+        "2": {
+          "train": 6466,
+          "excluded_spatial_buffer": 4159,
+          "test": 2926,
+          "validation": 1292
+        },
+        "3": {
+          "train": 7316,
+          "excluded_spatial_buffer": 3361,
+          "test": 3194,
+          "validation": 972
+        },
+        "4": {
+          "excluded_spatial_buffer": 6882,
+          "train": 4218,
+          "test": 2824,
+          "validation": 919
+        }
+      },
+      "PointNeXt": {
+        "0": {
+          "train": 5743,
+          "excluded_spatial_buffer": 5322,
+          "test": 2928,
+          "validation": 844
+        },
+        "1": {
+          "train": 6078,
+          "excluded_spatial_buffer": 4699,
+          "test": 2918,
+          "validation": 1142
+        },
+        "2": {
+          "train": 6564,
+          "excluded_spatial_buffer": 4179,
+          "test": 2840,
+          "validation": 1254
+        },
+        "3": {
+          "train": 7196,
+          "excluded_spatial_buffer": 3339,
+          "test": 3316,
+          "validation": 986
+        },
+        "4": {
+          "excluded_spatial_buffer": 6881,
+          "train": 4122,
+          "test": 2835,
+          "validation": 999
+        }
+      },
+      "KPConv": {
+        "0": {
+          "train": 5501,
+          "excluded_spatial_buffer": 5321,
+          "test": 3011,
+          "validation": 882
+        },
+        "1": {
+          "train": 5657,
+          "excluded_spatial_buffer": 4927,
+          "test": 2934,
+          "validation": 1197
+        },
+        "2": {
+          "train": 6441,
+          "excluded_spatial_buffer": 4096,
+          "test": 2912,
+          "validation": 1266
+        },
+        "3": {
+          "train": 7302,
+          "excluded_spatial_buffer": 3321,
+          "test": 3055,
+          "validation": 1037
+        },
+        "4": {
+          "excluded_spatial_buffer": 6700,
+          "train": 4321,
+          "test": 2803,
+          "validation": 891
+        }
+      },
+      "DGCNN": {
+        "0": {
+          "excluded_spatial_buffer": 7076,
+          "train": 3498,
+          "test": 2759,
+          "validation": 1450
+        },
+        "1": {
+          "train": 5888,
+          "excluded_spatial_buffer": 5068,
+          "test": 2929,
+          "validation": 898
+        },
+        "2": {
+          "train": 6972,
+          "excluded_spatial_buffer": 4106,
+          "test": 2715,
+          "validation": 990
+        },
+        "3": {
+          "train": 7161,
+          "test": 3424,
+          "excluded_spatial_buffer": 3164,
+          "validation": 1034
+        },
+        "4": {
+          "train": 5624,
+          "excluded_spatial_buffer": 5343,
+          "test": 2956,
+          "validation": 860
+        }
+      },
+      "ATL24": {
+        "0": {
+          "excluded_spatial_buffer": 4114,
+          "train": 2548,
+          "test": 1576,
+          "validation": 484
+        },
+        "1": {
+          "train": 3346,
+          "excluded_spatial_buffer": 2453,
+          "test": 2350,
+          "validation": 573
+        },
+        "2": {
+          "train": 4606,
+          "excluded_spatial_buffer": 2125,
+          "test": 1287,
+          "validation": 704
+        },
+        "3": {
+          "train": 4477,
+          "excluded_spatial_buffer": 2236,
+          "test": 1186,
+          "validation": 823
+        },
+        "4": {
+          "excluded_spatial_buffer": 3550,
+          "test": 2323,
+          "train": 2228,
+          "validation": 621
+        }
+      },
+      "Song2024": {
+        "0": {
+          "train": 2130,
+          "excluded_spatial_buffer": 1774,
+          "test": 1582,
+          "validation": 819
+        },
+        "1": {
+          "train": 2406,
+          "excluded_spatial_buffer": 1931,
+          "test": 1025,
+          "validation": 943
+        },
+        "2": {
+          "train": 2158,
+          "test": 2088,
+          "excluded_spatial_buffer": 1501,
+          "validation": 558
+        },
+        "3": {
+          "train": 3601,
+          "validation": 1204,
+          "excluded_spatial_buffer": 1006,
+          "test": 494
+        },
+        "4": {
+          "excluded_spatial_buffer": 3233,
+          "train": 1558,
+          "test": 1116,
+          "validation": 398
+        }
+      },
+      "Proposed": {
+        "0": {
+          "train": 5671,
+          "excluded_spatial_buffer": 5269,
+          "test": 2963,
+          "validation": 799
+        },
+        "1": {
+          "excluded_spatial_buffer": 5437,
+          "train": 5354,
+          "test": 2764,
+          "validation": 1147
+        },
+        "2": {
+          "train": 6134,
+          "excluded_spatial_buffer": 4293,
+          "test": 3008,
+          "validation": 1267
+        },
+        "3": {
+          "train": 7338,
+          "excluded_spatial_buffer": 3324,
+          "test": 3080,
+          "validation": 960
+        },
+        "4": {
+          "excluded_spatial_buffer": 6951,
+          "train": 3725,
+          "test": 2887,
+          "validation": 1139
+        }
+      }
+    },
+    "empty_methods": [],
+    "shared_test_anchor_method": "Proposed"
+  },
+  "anegada": {
+    "fold_sizes": [
+      1079,
+      927,
+      979,
+      1007,
+      1179
+    ],
+    "methods": {
+      "PointNetPP": {
+        "0": {
+          "excluded_spatial_buffer": 310,
+          "test": 164,
+          "validation": 135,
+          "train": 64
+        },
+        "1": {
+          "excluded_spatial_buffer": 402,
+          "validation": 110,
+          "test": 96,
+          "train": 65
+        },
+        "2": {
+          "excluded_spatial_buffer": 427,
+          "test": 137,
+          "validation": 104,
+          "train": 5
+        },
+        "3": {
+          "excluded_spatial_buffer": 410,
+          "validation": 102,
+          "test": 95,
+          "train": 66
+        },
+        "4": {
+          "excluded_spatial_buffer": 393,
+          "test": 181,
+          "validation": 99
+        }
+      },
+      "PointNeXt": {
+        "0": {
+          "excluded_spatial_buffer": 207,
+          "test": 173,
+          "validation": 147,
+          "train": 57
+        },
+        "1": {
+          "excluded_spatial_buffer": 315,
+          "validation": 134,
+          "test": 73,
+          "train": 62
+        },
+        "2": {
+          "validation": 269,
+          "excluded_spatial_buffer": 177,
+          "test": 128,
+          "train": 10
+        },
+        "3": {
+          "excluded_spatial_buffer": 316,
+          "train": 102,
+          "validation": 100,
+          "test": 66
+        },
+        "4": {
+          "excluded_spatial_buffer": 329,
+          "test": 144,
+          "validation": 111
+        }
+      },
+      "KPConv": {
+        "0": {
+          "excluded_spatial_buffer": 351,
+          "test": 161,
+          "validation": 135,
+          "train": 74
+        },
+        "1": {
+          "excluded_spatial_buffer": 395,
+          "test": 135,
+          "validation": 123,
+          "train": 68
+        },
+        "2": {
+          "excluded_spatial_buffer": 449,
+          "test": 136,
+          "validation": 117,
+          "train": 19
+        },
+        "3": {
+          "excluded_spatial_buffer": 428,
+          "validation": 117,
+          "test": 108,
+          "train": 68
+        },
+        "4": {
+          "excluded_spatial_buffer": 427,
+          "test": 181,
+          "validation": 111,
+          "train": 2
+        }
+      },
+      "DGCNN": {
+        "0": {
+          "excluded_spatial_buffer": 773,
+          "validation": 250,
+          "test": 250,
+          "train": 66
+        },
+        "1": {
+          "excluded_spatial_buffer": 802,
+          "test": 250,
+          "validation": 222,
+          "train": 65
+        },
+        "2": {
+          "excluded_spatial_buffer": 887,
+          "test": 204,
+          "validation": 145,
+          "train": 103
+        },
+        "3": {
+          "excluded_spatial_buffer": 726,
+          "test": 350,
+          "train": 158,
+          "validation": 105
+        },
+        "4": {
+          "excluded_spatial_buffer": 818,
+          "test": 285,
+          "validation": 139,
+          "train": 97
+        }
+      },
+      "ATL24": {
+        "0": {
+          "excluded_spatial_buffer": 255,
+          "validation": 135,
+          "train": 71,
+          "test": 56
+        },
+        "1": {
+          "excluded_spatial_buffer": 259,
+          "test": 135,
+          "validation": 123
+        },
+        "2": {
+          "excluded_spatial_buffer": 318,
+          "test": 100,
+          "validation": 99
+        },
+        "3": {
+          "excluded_spatial_buffer": 261,
+          "test": 129,
+          "validation": 127
+        },
+        "4": {
+          "excluded_spatial_buffer": 330,
+          "test": 97,
+          "validation": 90
+        }
+      },
+      "Song2024": {
+        "0": {
+          "validation": 107,
+          "test": 103,
+          "excluded_spatial_buffer": 85,
+          "train": 47
+        },
+        "1": {
+          "excluded_spatial_buffer": 188,
+          "validation": 118,
+          "test": 36
+        },
+        "2": {
+          "validation": 125,
+          "excluded_spatial_buffer": 119,
+          "test": 93,
+          "train": 5
+        },
+        "3": {
+          "validation": 170,
+          "excluded_spatial_buffer": 119,
+          "test": 53
+        },
+        "4": {
+          "excluded_spatial_buffer": 232,
+          "test": 57,
+          "validation": 53
+        }
+      },
+      "Proposed": {
+        "0": {
+          "excluded_spatial_buffer": 530,
+          "validation": 199,
+          "test": 172,
+          "train": 94
+        },
+        "1": {
+          "excluded_spatial_buffer": 567,
+          "test": 202,
+          "validation": 141,
+          "train": 85
+        },
+        "2": {
+          "excluded_spatial_buffer": 669,
+          "test": 181,
+          "validation": 135,
+          "train": 10
+        },
+        "3": {
+          "excluded_spatial_buffer": 590,
+          "test": 206,
+          "validation": 122,
+          "train": 77
+        },
+        "4": {
+          "excluded_spatial_buffer": 609,
+          "test": 234,
+          "validation": 152
+        }
+      }
+    },
+    "empty_methods": [],
+    "shared_test_anchor_method": "Proposed"
+  },
+  "tutuila": {
+    "fold_sizes": [
+      385,
+      67,
+      13,
+      0,
+      0
+    ],
+    "methods": {
+      "PointNetPP": {
+        "0": {
+          "test": 90,
+          "excluded_spatial_buffer": 4
+        },
+        "1": {
+          "excluded_spatial_buffer": 90,
+          "test": 4
+        },
+        "2": {
+          "excluded_spatial_buffer": 68,
+          "validation": 26
+        },
+        "3": {
+          "train": 94
+        },
+        "4": {
+          "train": 94
+        }
+      },
+      "PointNeXt": {
+        "0": {
+          "test": 79,
+          "excluded_spatial_buffer": 3
+        },
+        "1": {
+          "excluded_spatial_buffer": 82
+        },
+        "2": {
+          "excluded_spatial_buffer": 76,
+          "validation": 3,
+          "test": 3
+        },
+        "3": {
+          "train": 82
+        },
+        "4": {
+          "train": 82
+        }
+      },
+      "KPConv": {
+        "0": {
+          "test": 69,
+          "excluded_spatial_buffer": 6
+        },
+        "1": {
+          "excluded_spatial_buffer": 69,
+          "test": 6
+        },
+        "2": {
+          "excluded_spatial_buffer": 56,
+          "validation": 19
+        },
+        "3": {
+          "train": 75
+        },
+        "4": {
+          "train": 75
+        }
+      },
+      "DGCNN": {
+        "0": {
+          "test": 15,
+          "excluded_spatial_buffer": 5
+        },
+        "1": {
+          "excluded_spatial_buffer": 16,
+          "validation": 3,
+          "test": 1
+        },
+        "2": {
+          "excluded_spatial_buffer": 14,
+          "test": 4,
+          "validation": 2
+        },
+        "3": {
+          "train": 20
+        },
+        "4": {
+          "train": 20
+        }
+      },
+      "Song2024": {
+        "0": {
+          "test": 17,
+          "excluded_spatial_buffer": 4,
+          "validation": 2
+        },
+        "1": {
+          "excluded_spatial_buffer": 19,
+          "test": 2,
+          "validation": 2
+        },
+        "2": {
+          "excluded_spatial_buffer": 13,
+          "validation": 6,
+          "test": 4
+        },
+        "3": {
+          "train": 23
+        },
+        "4": {
+          "train": 23
+        }
+      },
+      "Proposed": {
+        "0": {
+          "test": 115,
+          "excluded_spatial_buffer": 56
+        },
+        "1": {
+          "excluded_spatial_buffer": 117,
+          "test": 54
+        },
+        "2": {
+          "excluded_spatial_buffer": 139,
+          "validation": 30,
+          "test": 2
+        },
+        "3": {
+          "train": 171
+        },
+        "4": {
+          "train": 171
+        }
+      }
+    },
+    "empty_methods": [
+      "ATL24"
+    ],
+    "shared_test_anchor_method": "Proposed"
+  },
+  "cocos_guam": {
+    "fold_sizes": [
+      3409,
+      3407,
+      3408,
+      3441,
+      3408
+    ],
+    "methods": {
+      "PointNetPP": {
+        "0": {
+          "excluded_spatial_buffer": 1442,
+          "test": 491,
+          "validation": 138
+        },
+        "1": {
+          "excluded_spatial_buffer": 1593,
+          "test": 390,
+          "validation": 88
+        },
+        "2": {
+          "excluded_spatial_buffer": 1512,
+          "test": 471,
+          "validation": 88
+        },
+        "3": {
+          "excluded_spatial_buffer": 1543,
+          "test": 439,
+          "validation": 89
+        },
+        "4": {
+          "excluded_spatial_buffer": 1448,
+          "validation": 306,
+          "test": 280,
+          "train": 37
+        }
+      },
+      "PointNeXt": {
+        "0": {
+          "excluded_spatial_buffer": 1080,
+          "test": 384,
+          "validation": 104
+        },
+        "1": {
+          "excluded_spatial_buffer": 1285,
+          "test": 238,
+          "validation": 45
+        },
+        "2": {
+          "excluded_spatial_buffer": 1178,
+          "test": 345,
+          "validation": 45
+        },
+        "3": {
+          "excluded_spatial_buffer": 1137,
+          "test": 385,
+          "validation": 46
+        },
+        "4": {
+          "excluded_spatial_buffer": 1103,
+          "validation": 226,
+          "test": 216,
+          "train": 23
+        }
+      },
+      "KPConv": {
+        "0": {
+          "excluded_spatial_buffer": 1740,
+          "test": 498,
+          "validation": 118
+        },
+        "1": {
+          "excluded_spatial_buffer": 1834,
+          "test": 427,
+          "validation": 95
+        },
+        "2": {
+          "excluded_spatial_buffer": 1724,
+          "test": 535,
+          "validation": 97
+        },
+        "3": {
+          "excluded_spatial_buffer": 1728,
+          "test": 531,
+          "validation": 97
+        },
+        "4": {
+          "excluded_spatial_buffer": 1631,
+          "test": 365,
+          "validation": 316,
+          "train": 44
+        }
+      },
+      "DGCNN": {
+        "0": {
+          "excluded_spatial_buffer": 1972,
+          "test": 554,
+          "validation": 157
+        },
+        "1": {
+          "excluded_spatial_buffer": 1902,
+          "test": 624,
+          "validation": 157
+        },
+        "2": {
+          "excluded_spatial_buffer": 2090,
+          "test": 426,
+          "validation": 153,
+          "train": 14
+        },
+        "3": {
+          "excluded_spatial_buffer": 2033,
+          "test": 486,
+          "validation": 163,
+          "train": 1
+        },
+        "4": {
+          "excluded_spatial_buffer": 1900,
+          "test": 593,
+          "validation": 126,
+          "train": 64
+        }
+      },
+      "ATL24": {
+        "0": {
+          "excluded_spatial_buffer": 1769,
+          "test": 399,
+          "validation": 103,
+          "train": 85
+        },
+        "1": {
+          "excluded_spatial_buffer": 1629,
+          "test": 572,
+          "validation": 155
+        },
+        "2": {
+          "excluded_spatial_buffer": 1744,
+          "test": 443,
+          "validation": 169
+        },
+        "3": {
+          "excluded_spatial_buffer": 1851,
+          "test": 341,
+          "validation": 164
+        },
+        "4": {
+          "excluded_spatial_buffer": 1509,
+          "test": 601,
+          "validation": 200,
+          "train": 46
+        }
+      },
+      "Song2024": {
+        "0": {
+          "excluded_spatial_buffer": 728,
+          "test": 236,
+          "validation": 84
+        },
+        "1": {
+          "excluded_spatial_buffer": 840,
+          "test": 149,
+          "validation": 59
+        },
+        "2": {
+          "excluded_spatial_buffer": 753,
+          "test": 234,
+          "validation": 61
+        },
+        "3": {
+          "excluded_spatial_buffer": 777,
+          "test": 206,
+          "validation": 65
+        },
+        "4": {
+          "excluded_spatial_buffer": 675,
+          "test": 223,
+          "validation": 137,
+          "train": 13
+        }
+      },
+      "Proposed": {
+        "0": {
+          "excluded_spatial_buffer": 3844,
+          "test": 847,
+          "train": 175,
+          "validation": 125
+        },
+        "1": {
+          "excluded_spatial_buffer": 3670,
+          "test": 1007,
+          "train": 198,
+          "validation": 116
+        },
+        "2": {
+          "excluded_spatial_buffer": 3651,
+          "test": 954,
+          "train": 234,
+          "validation": 152
+        },
+        "3": {
+          "excluded_spatial_buffer": 3594,
+          "test": 1053,
+          "train": 175,
+          "validation": 169
+        },
+        "4": {
+          "excluded_spatial_buffer": 3257,
+          "test": 1130,
+          "train": 304,
+          "validation": 300
+        }
+      }
+    },
+    "empty_methods": [],
+    "shared_test_anchor_method": "Proposed"
+  },
+  "kahului": {
+    "fold_sizes": [
+      953,
+      951,
+      950,
+      944,
+      944
+    ],
+    "methods": {
+      "PointNetPP": {
+        "0": {
+          "excluded_spatial_buffer": 182,
+          "validation": 147,
+          "test": 96,
+          "train": 44
+        },
+        "1": {
+          "excluded_spatial_buffer": 222,
+          "validation": 115,
+          "test": 86,
+          "train": 46
+        },
+        "2": {
+          "excluded_spatial_buffer": 227,
+          "validation": 106,
+          "test": 105,
+          "train": 31
+        },
+        "3": {
+          "excluded_spatial_buffer": 164,
+          "test": 111,
+          "validation": 101,
+          "train": 93
+        },
+        "4": {
+          "excluded_spatial_buffer": 185,
+          "validation": 123,
+          "train": 90,
+          "test": 71
+        }
+      },
+      "PointNeXt": {
+        "0": {
+          "excluded_spatial_buffer": 119,
+          "validation": 117,
+          "test": 58,
+          "train": 33
+        },
+        "1": {
+          "excluded_spatial_buffer": 143,
+          "validation": 110,
+          "test": 53,
+          "train": 21
+        },
+        "2": {
+          "validation": 113,
+          "excluded_spatial_buffer": 97,
+          "test": 96,
+          "train": 21
+        },
+        "3": {
+          "validation": 110,
+          "excluded_spatial_buffer": 91,
+          "test": 78,
+          "train": 48
+        },
+        "4": {
+          "validation": 123,
+          "excluded_spatial_buffer": 107,
+          "train": 55,
+          "test": 42
+        }
+      },
+      "KPConv": {
+        "0": {
+          "excluded_spatial_buffer": 198,
+          "validation": 114,
+          "test": 103,
+          "train": 54
+        },
+        "1": {
+          "excluded_spatial_buffer": 238,
+          "test": 106,
+          "validation": 102,
+          "train": 23
+        },
+        "2": {
+          "excluded_spatial_buffer": 229,
+          "validation": 101,
+          "test": 94,
+          "train": 45
+        },
+        "3": {
+          "excluded_spatial_buffer": 157,
+          "validation": 112,
+          "train": 104,
+          "test": 96
+        },
+        "4": {
+          "validation": 159,
+          "excluded_spatial_buffer": 158,
+          "train": 82,
+          "test": 70
+        }
+      },
+      "DGCNN": {
+        "0": {
+          "excluded_spatial_buffer": 716,
+          "train": 404,
+          "test": 272,
+          "validation": 128
+        },
+        "1": {
+          "excluded_spatial_buffer": 856,
+          "train": 296,
+          "test": 264,
+          "validation": 104
+        },
+        "2": {
+          "excluded_spatial_buffer": 914,
+          "test": 334,
+          "train": 166,
+          "validation": 106
+        },
+        "3": {
+          "excluded_spatial_buffer": 757,
+          "train": 381,
+          "test": 282,
+          "validation": 100
+        },
+        "4": {
+          "train": 604,
+          "excluded_spatial_buffer": 421,
+          "test": 368,
+          "validation": 127
+        }
+      },
+      "ATL24": {
+        "0": {
+          "test": 92,
+          "validation": 81,
+          "excluded_spatial_buffer": 32
+        },
+        "1": {
+          "excluded_spatial_buffer": 97,
+          "test": 71,
+          "validation": 37
+        },
+        "2": {
+          "validation": 109,
+          "train": 34,
+          "excluded_spatial_buffer": 31,
+          "test": 31
+        },
+        "3": {
+          "validation": 109,
+          "train": 79,
+          "test": 9,
+          "excluded_spatial_buffer": 8
+        },
+        "4": {
+          "validation": 139,
+          "train": 38,
+          "excluded_spatial_buffer": 26,
+          "test": 2
+        }
+      },
+      "Song2024": {
+        "0": {
+          "excluded_spatial_buffer": 305,
+          "train": 204,
+          "validation": 109,
+          "test": 97
+        },
+        "1": {
+          "excluded_spatial_buffer": 330,
+          "test": 147,
+          "train": 137,
+          "validation": 101
+        },
+        "2": {
+          "excluded_spatial_buffer": 338,
+          "test": 159,
+          "train": 117,
+          "validation": 101
+        },
+        "3": {
+          "excluded_spatial_buffer": 252,
+          "train": 190,
+          "test": 163,
+          "validation": 110
+        },
+        "4": {
+          "train": 269,
+          "excluded_spatial_buffer": 196,
+          "test": 149,
+          "validation": 101
+        }
+      },
+      "Proposed": {
+        "0": {
+          "excluded_spatial_buffer": 454,
+          "test": 235,
+          "train": 209,
+          "validation": 139
+        },
+        "1": {
+          "excluded_spatial_buffer": 574,
+          "test": 224,
+          "train": 138,
+          "validation": 101
+        },
+        "2": {
+          "excluded_spatial_buffer": 700,
+          "test": 131,
+          "validation": 118,
+          "train": 88
+        },
+        "3": {
+          "excluded_spatial_buffer": 481,
+          "test": 205,
+          "validation": 194,
+          "train": 157
+        },
+        "4": {
+          "train": 402,
+          "excluded_spatial_buffer": 293,
+          "test": 242,
+          "validation": 100
+        }
+      }
+    },
+    "empty_methods": [],
+    "shared_test_anchor_method": "Proposed"
+  },
+  "saipan": {
+    "fold_sizes": [
+      10863,
+      10850,
+      10849,
+      10860,
+      10858
+    ],
+    "methods": {
+      "PointNetPP": {
+        "0": {
+          "excluded_spatial_buffer": 4352,
+          "test": 1568,
+          "train": 513,
+          "validation": 219
+        },
+        "1": {
+          "excluded_spatial_buffer": 4230,
+          "test": 1250,
+          "train": 961,
+          "validation": 211
+        },
+        "2": {
+          "excluded_spatial_buffer": 4389,
+          "test": 1134,
+          "train": 965,
+          "validation": 164
+        },
+        "3": {
+          "excluded_spatial_buffer": 4625,
+          "test": 1473,
+          "train": 300,
+          "validation": 254
+        },
+        "4": {
+          "excluded_spatial_buffer": 5282,
+          "test": 1227,
+          "validation": 122,
+          "train": 21
+        }
+      },
+      "PointNeXt": {
+        "0": {
+          "excluded_spatial_buffer": 3455,
+          "test": 1306,
+          "train": 299,
+          "validation": 166
+        },
+        "1": {
+          "excluded_spatial_buffer": 3355,
+          "test": 969,
+          "train": 763,
+          "validation": 139
+        },
+        "2": {
+          "excluded_spatial_buffer": 3467,
+          "test": 861,
+          "train": 769,
+          "validation": 129
+        },
+        "3": {
+          "excluded_spatial_buffer": 3405,
+          "test": 1129,
+          "train": 541,
+          "validation": 151
+        },
+        "4": {
+          "excluded_spatial_buffer": 4128,
+          "test": 961,
+          "validation": 105,
+          "train": 32
+        }
+      },
+      "KPConv": {
+        "0": {
+          "excluded_spatial_buffer": 5425,
+          "test": 1832,
+          "train": 503,
+          "validation": 244
+        },
+        "1": {
+          "excluded_spatial_buffer": 5095,
+          "test": 1589,
+          "train": 1093,
+          "validation": 227
+        },
+        "2": {
+          "excluded_spatial_buffer": 5113,
+          "test": 1354,
+          "train": 1327,
+          "validation": 210
+        },
+        "3": {
+          "excluded_spatial_buffer": 5642,
+          "test": 1651,
+          "validation": 375,
+          "train": 336
+        },
+        "4": {
+          "excluded_spatial_buffer": 6307,
+          "test": 1578,
+          "validation": 116,
+          "train": 3
+        }
+      },
+      "DGCNN": {
+        "0": {
+          "excluded_spatial_buffer": 8001,
+          "test": 1753,
+          "validation": 375,
+          "train": 304
+        },
+        "1": {
+          "excluded_spatial_buffer": 6668,
+          "test": 2319,
+          "train": 1234,
+          "validation": 212
+        },
+        "2": {
+          "excluded_spatial_buffer": 6539,
+          "test": 2348,
+          "train": 1355,
+          "validation": 191
+        },
+        "3": {
+          "excluded_spatial_buffer": 7337,
+          "test": 2025,
+          "train": 856,
+          "validation": 215
+        },
+        "4": {
+          "excluded_spatial_buffer": 8285,
+          "test": 1988,
+          "validation": 154,
+          "train": 6
+        }
+      },
+      "ATL24": {
+        "0": {
+          "excluded_spatial_buffer": 4596,
+          "test": 1289,
+          "train": 272,
+          "validation": 268
+        },
+        "1": {
+          "excluded_spatial_buffer": 4536,
+          "train": 985,
+          "test": 713,
+          "validation": 191
+        },
+        "2": {
+          "excluded_spatial_buffer": 3757,
+          "test": 1647,
+          "train": 852,
+          "validation": 169
+        },
+        "3": {
+          "excluded_spatial_buffer": 4361,
+          "test": 1356,
+          "train": 429,
+          "validation": 279
+        },
+        "4": {
+          "excluded_spatial_buffer": 4972,
+          "test": 1420,
+          "validation": 33
+        }
+      },
+      "Song2024": {
+        "0": {
+          "excluded_spatial_buffer": 2210,
+          "test": 654,
+          "train": 206,
+          "validation": 165
+        },
+        "1": {
+          "excluded_spatial_buffer": 1802,
+          "test": 732,
+          "train": 594,
+          "validation": 107
+        },
+        "2": {
+          "excluded_spatial_buffer": 2076,
+          "train": 539,
+          "test": 513,
+          "validation": 107
+        },
+        "3": {
+          "excluded_spatial_buffer": 1985,
+          "test": 712,
+          "train": 433,
+          "validation": 105
+        },
+        "4": {
+          "excluded_spatial_buffer": 2436,
+          "test": 624,
+          "validation": 164,
+          "train": 11
+        }
+      },
+      "Proposed": {
+        "0": {
+          "excluded_spatial_buffer": 10634,
+          "test": 2461,
+          "train": 655,
+          "validation": 555
+        },
+        "1": {
+          "excluded_spatial_buffer": 9262,
+          "test": 3278,
+          "train": 1462,
+          "validation": 303
+        },
+        "2": {
+          "excluded_spatial_buffer": 9281,
+          "test": 2992,
+          "train": 1731,
+          "validation": 301
+        },
+        "3": {
+          "excluded_spatial_buffer": 10103,
+          "test": 2514,
+          "train": 1265,
+          "validation": 423
+        },
+        "4": {
+          "excluded_spatial_buffer": 11140,
+          "test": 3060,
+          "validation": 100,
+          "train": 5
+        }
+      }
+    },
+    "empty_methods": [],
+    "shared_test_anchor_method": "Proposed"
+  },
+  "kaneohe": {
+    "fold_sizes": [
+      4540,
+      4544,
+      4665,
+      4537,
+      4614
+    ],
+    "methods": {
+      "PointNetPP": {
+        "0": {
+          "train": 1265,
+          "test": 767,
+          "excluded_spatial_buffer": 470,
+          "validation": 247
+        },
+        "1": {
+          "train": 1118,
+          "excluded_spatial_buffer": 927,
+          "test": 565,
+          "validation": 139
+        },
+        "2": {
+          "excluded_spatial_buffer": 1261,
+          "train": 891,
+          "test": 482,
+          "validation": 115
+        },
+        "3": {
+          "train": 1102,
+          "excluded_spatial_buffer": 860,
+          "validation": 441,
+          "test": 346
+        },
+        "4": {
+          "excluded_spatial_buffer": 1414,
+          "train": 626,
+          "test": 589,
+          "validation": 120
+        }
+      },
+      "PointNeXt": {
+        "0": {
+          "test": 2446,
+          "train": 1590,
+          "validation": 842,
+          "excluded_spatial_buffer": 480
+        },
+        "1": {
+          "excluded_spatial_buffer": 2406,
+          "train": 1940,
+          "test": 643,
+          "validation": 369
+        },
+        "2": {
+          "validation": 2670,
+          "excluded_spatial_buffer": 2135,
+          "test": 510,
+          "train": 43
+        },
+        "3": {
+          "train": 2787,
+          "excluded_spatial_buffer": 1718,
+          "validation": 498,
+          "test": 355
+        },
+        "4": {
+          "excluded_spatial_buffer": 2395,
+          "test": 1404,
+          "train": 1274,
+          "validation": 285
+        }
+      },
+      "KPConv": {
+        "0": {
+          "train": 1061,
+          "excluded_spatial_buffer": 522,
+          "test": 478,
+          "validation": 364
+        },
+        "1": {
+          "train": 901,
+          "excluded_spatial_buffer": 784,
+          "test": 600,
+          "validation": 140
+        },
+        "2": {
+          "excluded_spatial_buffer": 1260,
+          "test": 545,
+          "train": 478,
+          "validation": 142
+        },
+        "3": {
+          "excluded_spatial_buffer": 744,
+          "train": 728,
+          "validation": 480,
+          "test": 473
+        },
+        "4": {
+          "excluded_spatial_buffer": 1098,
+          "train": 884,
+          "test": 329,
+          "validation": 114
+        }
+      },
+      "DGCNN": {
+        "0": {
+          "train": 1838,
+          "excluded_spatial_buffer": 1383,
+          "test": 508,
+          "validation": 304
+        },
+        "1": {
+          "excluded_spatial_buffer": 1686,
+          "train": 1225,
+          "test": 978,
+          "validation": 144
+        },
+        "2": {
+          "excluded_spatial_buffer": 2117,
+          "test": 937,
+          "train": 865,
+          "validation": 114
+        },
+        "3": {
+          "excluded_spatial_buffer": 1519,
+          "train": 1121,
+          "test": 912,
+          "validation": 481
+        },
+        "4": {
+          "train": 1548,
+          "excluded_spatial_buffer": 1445,
+          "test": 698,
+          "validation": 342
+        }
+      },
+      "ATL24": {
+        "0": {
+          "train": 782,
+          "excluded_spatial_buffer": 429,
+          "validation": 340,
+          "test": 6
+        },
+        "1": {
+          "excluded_spatial_buffer": 886,
+          "train": 440,
+          "validation": 126,
+          "test": 105
+        },
+        "2": {
+          "excluded_spatial_buffer": 774,
+          "validation": 383,
+          "test": 286,
+          "train": 114
+        },
+        "3": {
+          "test": 676,
+          "excluded_spatial_buffer": 397,
+          "train": 287,
+          "validation": 197
+        },
+        "4": {
+          "excluded_spatial_buffer": 692,
+          "test": 484,
+          "train": 199,
+          "validation": 182
+        }
+      },
+      "Song2024": {
+        "0": {
+          "train": 978,
+          "excluded_spatial_buffer": 447,
+          "test": 266,
+          "validation": 229
+        },
+        "1": {
+          "excluded_spatial_buffer": 685,
+          "train": 567,
+          "test": 539,
+          "validation": 129
+        },
+        "2": {
+          "excluded_spatial_buffer": 922,
+          "test": 513,
+          "train": 383,
+          "validation": 102
+        },
+        "3": {
+          "excluded_spatial_buffer": 676,
+          "train": 562,
+          "validation": 398,
+          "test": 284
+        },
+        "4": {
+          "excluded_spatial_buffer": 724,
+          "train": 582,
+          "test": 318,
+          "validation": 296
+        }
+      },
+      "Proposed": {
+        "0": {
+          "train": 2410,
+          "excluded_spatial_buffer": 1430,
+          "validation": 949,
+          "test": 69
+        },
+        "1": {
+          "excluded_spatial_buffer": 1898,
+          "train": 1603,
+          "test": 1114,
+          "validation": 243
+        },
+        "2": {
+          "excluded_spatial_buffer": 2502,
+          "test": 1392,
+          "train": 827,
+          "validation": 137
+        },
+        "3": {
+          "excluded_spatial_buffer": 1708,
+          "test": 1491,
+          "train": 916,
+          "validation": 743
+        },
+        "4": {
+          "excluded_spatial_buffer": 1835,
+          "train": 1620,
+          "test": 792,
+          "validation": 611
+        }
+      }
+    },
+    "empty_methods": [],
+    "shared_test_anchor_method": "Proposed"
+  }
+}

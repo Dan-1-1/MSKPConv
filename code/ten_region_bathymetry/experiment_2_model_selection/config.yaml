@@ -1,0 +1,72 @@
+experiment_id: regressor_comparison_v1
+training_mode: pooled
+primary_reference: CUDEM
+test_support: fixed_proposed_fold_cudem
+# Hold photon classification and refraction correction fixed. The experiment
+# changes only the downstream regressor.
+methods: [Proposed]
+regressors: [CatBoost, XGBoost, RandomForest, MLP, LightweightCNN, ConvexBlend, Lyzenga, StumpfLogRatio]
+folds: [0, 1, 2, 3, 4]
+random_seed: 42
+# The comparison reuses the main experiment's spatially blocked split.
+# Keep the protocol explicit here for auditability.
+spatial_buffer_m: 500.0
+save_models: true
+save_predictions: true
+catboost:
+  iterations: 1000
+  depth: 6
+  learning_rate: 0.03
+  l2_leaf_reg: 1
+  random_strength: 0.5
+  bagging_temperature: 0.2
+  border_count: 254
+  loss_function: RMSE
+xgboost:
+  n_estimators: 500
+  max_depth: 6
+  learning_rate: 0.03
+  subsample: 0.8
+  colsample_bytree: 0.8
+  reg_lambda: 1.0
+  objective: reg:squarederror
+  tree_method: hist
+random_forest:
+  n_estimators: 300
+  max_features: 0.8
+  min_samples_leaf: 2
+  n_jobs: -1
+mlp:
+  hidden_layer_sizes: [128, 64]
+  alpha: 0.0001
+  learning_rate_init: 0.001
+  batch_size: 1024
+  max_iter: 300
+  early_stopping: true
+  validation_fraction: 0.1
+  n_iter_no_change: 25
+lightweight_cnn:
+  # Raw Sentinel-2 B02/B03/B04/B08 image patch, centered at each matched pixel.
+  image_patch_size: 11
+  conv_channels: [16, 32]
+  kernel_size: 3
+  dense_units: 16
+  dropout: 0.10
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  batch_size: 2048
+  epochs: 150
+  patience: 20
+  min_delta: 0.00001
+  device: cpu
+  num_threads: 4
+convex_blend:
+  # Non-negative weights summing to one, fitted on the outer-fold validation set.
+  # The untouched outer-fold test set is used only for final evaluation.
+  base_regressors: [LightweightCNN, MLP, CatBoost, XGBoost, RandomForest]
+  objective: rmse
+lyzenga:
+  eps: 0.000001
+stumpf_log_ratio:
+  scale: 1000.0
+  eps: 0.000001

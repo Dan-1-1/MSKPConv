@@ -1,0 +1,22 @@
+experiment_id: leave_one_region_out_full_scene_retraining_v1
+primary_regressor: ConvexBlend
+primary_reference: CUDEM
+test_support: full_representative_scene_underwater_cudem
+methods: [Proposed]
+target_regions: [florida_bay, key_largo, key_west, marathon, anegada, tutuila, cocos_guam, kahului, saipan, kaneohe]
+proportions: [0.00, 0.05, 0.10, 0.25, 0.50, 1.00]
+# A single deterministic nested track ordering is used. Reviewer-requested
+# uncertainty is quantified from spatially blocked full-scene CUDEM residuals.
+selection_seeds: [42]
+adaptation_strategy: leave_one_region_out_full_model_retraining
+depth_bins_m: [0, 2, 5, 10, 15, 20]
+depth_balance_weight: 0.5
+selection_spatial_grid_m: 1000.0
+validation_fraction: 0.10
+cudem_resampling: bilinear
+cnn_chunk_size: 20000
+bootstrap_block_m: 500.0
+bootstrap_repeats: 200
+bootstrap_confidence: 0.95
+save_scene_maps: false
+resume: true

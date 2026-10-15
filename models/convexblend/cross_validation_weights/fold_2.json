@@ -1,0 +1,26 @@
+{
+  "type": "validation_fitted_convex_blend",
+  "method": "Proposed",
+  "fold": 2,
+  "objective": "rmse",
+  "fit_split": "outer_fold_validation",
+  "train_rows": 34418,
+  "validation_rows": 7080,
+  "cnn_best_epoch": 145,
+  "catboost_best_iteration": 907,
+  "base_regressors": [
+    "LightweightCNN",
+    "MLP",
+    "CatBoost",
+    "XGBoost",
+    "RandomForest"
+  ],
+  "weights": [
+    0.992767619300148,
+    0.007232380699852034,
+    0.0,
+    1.666279469580923e-17,
+    0.0
+  ],
+  "validation_rmse": 0.8569794616639373
+}

@@ -1,0 +1,35 @@
+{
+  "release": "v2.0.0",
+  "release_asset": {
+    "name": "convexblend-final-weights-v2.0.0.zip",
+    "url": "https://github.com/Dan-1-1/MSKPConv/releases/download/v2.0.0/convexblend-final-weights-v2.0.0.zip",
+    "bytes": 520624751,
+    "sha256": "16ff022c5edf023c78d7a83b339f69645ec64ad5ee12bbd1d24d03df1c8eb96c"
+  },
+  "repository_files": [
+    {"path": "models/classification/baselines/dgcnn_best.pt", "bytes": 4781001, "sha256": "ab5d545a725868f3c87894e1a5746df91b1bf718b6f9a736fda948e649ff4c95"},
+    {"path": "models/classification/baselines/kpconv_best.pt", "bytes": 8271193, "sha256": "1732cd86e7bfc155cc962a9654a40b55a8d258d3cb54345b1d97c176262a6738"},
+    {"path": "models/classification/baselines/mskpconv_best_baseline_package.pt", "bytes": 32630456, "sha256": "8bde57d8893bd250656bd5339417b726b96a8576d6ea438d7534e5772f9a4af4"},
+    {"path": "models/classification/baselines/pointnet2_best.pt", "bytes": 12798031, "sha256": "65c247e9a486bf791d841974413dfbc78a2410d3542216c4ad7c9cee4cc08833"},
+    {"path": "models/classification/baselines/pointnext_best.pt", "bytes": 17459167, "sha256": "3d8471e5fc80e83acc33927a0d4b0c214ffd2d5c7878e670b2313b10edd8cc7c"},
+    {"path": "models/classification/mskpconv/mskpconv_best.pth", "bytes": 32648642, "sha256": "ae2660d8c3671243c55033167fb04aa8d453326fe19e53ab64c37fd939be8b8f"},
+    {"path": "models/convexblend/cross_validation_weights/fold_0.json", "bytes": 576, "sha256": "fb7d7873691ed50045dac9e3ee81e7d740b95152e4e819441618b69e634da0b1"},
+    {"path": "models/convexblend/cross_validation_weights/fold_1.json", "bytes": 561, "sha256": "1bb6062c11d24bf23e94fa350a45c8991c58f441d057f335ebc2a8463219a51f"},
+    {"path": "models/convexblend/cross_validation_weights/fold_2.json", "bytes": 545, "sha256": "49978e2c7e613e9790bf4be47297858001080f679bdfae356ece9261df0eab7d"},
+    {"path": "models/convexblend/cross_validation_weights/fold_3.json", "bytes": 540, "sha256": "c7b84ee6c13b1f26f64c8ee87ac5b150c6aa86746296d67ec98b274a998024f4"},
+    {"path": "models/convexblend/cross_validation_weights/fold_4.json", "bytes": 560, "sha256": "2b460c020e95d2453367d33690d229fbb02620e21dacabd095fb87c5092dfbcf"},
+    {"path": "models/convexblend/final/Proposed/CatBoost/final.cbm", "bytes": 785832, "sha256": "50f8b3a40abb6eb374eb479863e7c71d2a92e638873537721f0dc970acab9575"},
+    {"path": "models/convexblend/final/Proposed/ConvexBlend/final.json", "bytes": 854, "sha256": "27ba871adb41968d05463a3c476c2a3f2c0c46a6d420de373269909ca2ef822d"},
+    {"path": "models/convexblend/final/Proposed/LightweightCNN/final.joblib", "bytes": 23770, "sha256": "891a69f21d4b46cccece97585c45d4ba456ac1cac8ae692ac782f8bd7c64532e"},
+    {"path": "models/convexblend/final/Proposed/MLP/final.joblib", "bytes": 300753, "sha256": "5e6c04b1fc16e01430f14e8c03bae63a78e76b2ae5e959ed0f365cd809a0a6ff"},
+    {"path": "models/convexblend/final/Proposed/XGBoost/final.joblib", "bytes": 747644, "sha256": "1a70f70829647b83fd4bc0fc1b4202658926a9463ab13ecae1cc4e89eb394e13"}
+  ],
+  "convexblend_files": [
+    {"path": "models/convexblend/final/Proposed/CatBoost/final.cbm", "bytes": 785832, "sha256": "50f8b3a40abb6eb374eb479863e7c71d2a92e638873537721f0dc970acab9575"},
+    {"path": "models/convexblend/final/Proposed/ConvexBlend/final.json", "bytes": 854, "sha256": "27ba871adb41968d05463a3c476c2a3f2c0c46a6d420de373269909ca2ef822d"},
+    {"path": "models/convexblend/final/Proposed/LightweightCNN/final.joblib", "bytes": 23770, "sha256": "891a69f21d4b46cccece97585c45d4ba456ac1cac8ae692ac782f8bd7c64532e"},
+    {"path": "models/convexblend/final/Proposed/MLP/final.joblib", "bytes": 300753, "sha256": "5e6c04b1fc16e01430f14e8c03bae63a78e76b2ae5e959ed0f365cd809a0a6ff"},
+    {"path": "models/convexblend/final/Proposed/RandomForest/final.joblib", "bytes": 524352200, "sha256": "965362669c2f06d4def4e1a982226b12268d00c8d45c7893e9786e4f1813131c"},
+    {"path": "models/convexblend/final/Proposed/XGBoost/final.joblib", "bytes": 747644, "sha256": "1a70f70829647b83fd4bc0fc1b4202658926a9463ab13ecae1cc4e89eb394e13"}
+  ]
+}

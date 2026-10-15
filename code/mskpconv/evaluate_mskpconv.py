@@ -1,5 +1,7 @@
+import argparse
 import glob
 import os
+from pathlib import Path
 
 import torch
 
@@ -8,12 +10,13 @@ from mskpconv_model import PhysicsKPConvNet
 from train_mskpconv import set_seed, test_per_file
 
 
-def run_standalone_test(model_path="best_model.pth"):
+def run_standalone_test(model_path, test_dir=None):
     """Load a trained model and run file-wise inference on the test directory."""
     set_seed(Config.SEED)
     device = torch.device(Config.DEVICE if torch.cuda.is_available() else "cpu")
 
-    test_files = glob.glob(os.path.join(Config.TEST_DATA_DIR, "*.csv"))
+    test_root = test_dir or Config.TEST_DATA_DIR
+    test_files = sorted(glob.glob(os.path.join(test_root, "*.csv")))
     if not test_files:
         print("No test CSV files found.")
         return
@@ -33,6 +36,17 @@ def run_standalone_test(model_path="best_model.pth"):
         print(f"Standalone test failed: {e}")
 
 
+def main():
+    release_root = Path(__file__).resolve().parents[2]
+    parser = argparse.ArgumentParser(description="Evaluate the released MSKPConv checkpoint.")
+    parser.add_argument(
+        "--checkpoint",
+        default=str(release_root / "models" / "classification" / "mskpconv" / "mskpconv_best.pth"),
+    )
+    parser.add_argument("--test-dir", default=Config.TEST_DATA_DIR)
+    args = parser.parse_args()
+    run_standalone_test(model_path=args.checkpoint, test_dir=args.test_dir)
+
+
 if __name__ == "__main__":
-    WEIGHT_FILE = os.path.join(Config.MODEL_SAVE_DIR, "best_model.pth")
-    run_standalone_test(model_path=WEIGHT_FILE)
+    main()

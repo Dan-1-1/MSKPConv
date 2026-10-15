@@ -1,79 +1,104 @@
 # MSKPConv
 
-Reproducible implementation of **MSKPConv: ICESat-2 Photon Classification for Sentinel-2 Shallow-Water DEM Reconstruction**. The repository contains the current model, the 24-dimensional handcrafted feature extractor, training/evaluation scripts, baseline implementations, and the previously uploaded datasets and checkpoints.
+Reproducibility release for the manuscript **MSKPConv: ICESat-2 Photon
+Classification for Sentinel-2 Shallow-Water DEM Reconstruction**.
 
-## Repository layout
+This revision replaces the former single-model inversion package with the final
+ten-region **ConvexBlend** workflow. The inversion model is a non-negative,
+sum-to-one blend of five fitted regressors:
 
-```text
-code/
-  mskpconv/
-    config.py                       portable paths and experiment settings
-    preprocess_atl03_features.py    24-D feature extraction and diagnostics
-    convert_hdf5.py                 optional HDF5 cache generation
-    dataset.py                      chunked point-cloud datasets and voting
-    mskpconv_model.py               MSKPConv encoder-decoder network
-    losses.py                       classification and Lovász losses
-    train_mskpconv.py               training, validation, and test evaluation
-    evaluate_mskpconv.py            standalone checkpoint evaluation
-    predict_validation_regions.py   prediction on unlabeled regional files
-    visualize_photon_predictions.py plots and per-file prediction exports
-  baseline_classification/          PointNet++, PointNeXt, KPConv, DGCNN, and ablations
-  photon_correction/                ICESat-2 refraction and DEM validation utilities
-  image_matching/                   ICESat-2/Sentinel-2 matching utilities
-  catboost_inversion/               CatBoost bathymetry inversion utilities
-data/
-  Train/ Val/ Test/                 labeled ATL03 CSV files
-models/                              released checkpoints
-requirements.txt                    Python dependencies
-```
+1. Lightweight 2-D CNN
+2. multilayer perceptron (MLP)
+3. CatBoost
+4. XGBoost
+5. random forest
 
-Generated logs, predictions, caches, and figures are written under `results/` and are ignored by Git. Existing `data/` and `models/` files are not changed by the code update.
+The repository contains model code, inference entry points, trained
+classification weights, ConvexBlend metadata and small base-model weights, and
+the exact split indices used by the reported experiments. The complete final
+ConvexBlend bundle, including the 500 MiB random-forest checkpoint, is attached
+to GitHub Release `v2.0.0` because that file exceeds GitHub's 100 MiB regular
+file limit.
 
-## 24-dimensional handcrafted features
+## Reviewer requirement 18
 
-The extractor returns features in this fixed order:
+| Required item | Location |
+| --- | --- |
+| Trained MSKPConv and classification-baseline weights | `models/classification/` |
+| Complete five-model ConvexBlend weights | GitHub Release `v2.0.0`; manifest in `models/WEIGHTS_MANIFEST.json` |
+| Photon classification inference | `code/mskpconv/evaluate_mskpconv.py` |
+| Five-model ConvexBlend inference | `code/ten_region_bathymetry/predict_convexblend.py` |
+| Exact classification file split | `splits/photon_classification/files.csv` |
+| Exact inversion row/fold assignments | `splits/convexblend/row_splits.parquet` |
+| Human-readable track/fold index | `splits/convexblend/track_folds.csv` |
+| Five outer-fold blend weights | `models/convexblend/cross_validation_weights/` |
+| Exact experiment configuration | `code/ten_region_bathymetry/experiment_1_main/config.yaml` |
 
-| Dimensions | Feature group | Default settings |
-|---|---|---|
-| 1–4 | Elevation difference | K = 5, 10, 15, 25 |
-| 5–8 | LOFE / weighted neighborhood distance | K = 5, 10, 15, 25 |
-| 9–12 | Density | radii = 1, 2, 4, 5 |
-| 13–16 | Local vertical standard deviation | K = 5, 10, 15, 25 |
-| 17–20 | Vertical asymmetry | radii = 1, 2, 4, 5; thresholds = 0.05, 0.10, 0.15, 0.20 |
-| 21–24 | Horizontal asymmetry | radii = 1, 2, 4, 5; thresholds = 0.5, 1.0, 1.5, 2.0 |
+`splits/convexblend/row_splits.parquet` stores every experimental row's source
+index, region, classification method, track group, Sentinel-2 scene and pixel,
+geographic coordinates, outer fold, and its train/validation/test/excluded
+status for each of the five folds. This is the authoritative split artifact;
+summary counts alone are not used as a substitute for indices.
 
-The KNN and density groups use the anisotropic scale pairs `(s_x, s_z)` = `(1/5, 1)`, `(1/10, 2)`, `(1/15, 2)`, and `(1/20, 4)`. File-level group normalization is applied after feature extraction. Depth-dependent pull-factor correction and neighbor diagnostics are retained in the current implementation.
-
-## Reproduction workflow
-
-Run commands from the repository root after installing the dependencies:
+## Installation
 
 ```bash
-pip install -r requirements.txt
-python code/mskpconv/convert_hdf5.py
-python code/mskpconv/train_mskpconv.py
-python code/mskpconv/evaluate_mskpconv.py
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+python -m pip install -r requirements.txt
+python scripts/download_convexblend_weights.py
+python scripts/verify_release.py
 ```
 
-`convert_hdf5.py` is optional when CSV preprocessing is preferred. The cache is configuration-dependent; regenerate it whenever the feature settings change. The default evaluation reads the independent `data/Test` split, which contains the 20 test tracks used for the reported ATL03 evaluation.
+For CUDA, install the PyTorch wheel matching the local driver instead of the
+CPU/default wheel resolved by the last command.
 
-## Reproducible overrides
+## ConvexBlend inference
 
-The default paths are repository-relative. For a custom data/output location, set:
+The table input must contain the eight columns listed below. The CNN input is a
+NumPy array with shape `[N, 4, 11, 11]` in B02/B03/B04/B08 order and with rows
+aligned to the table.
 
 ```bash
-export MSKPCONV_DATA_ROOT=/path/to/data
-export MSKPCONV_OUTPUT_ROOT=/path/to/results
-export MSKPCONV_MODEL_ROOT=/path/to/models
-export MSKPCONV_DEVICE=cuda:0
+python code/ten_region_bathymetry/predict_convexblend.py \
+  --input features.parquet \
+  --patches sentinel2_patches.npy \
+  --output predictions.parquet
 ```
 
-For a sensitivity run, provide a JSON file with `knn_configs` and/or `density_configs` and set `FEATURE_CONFIG_PATH`. `EXPERIMENT_ROOT`, `EXPERIMENT_SEED`, `SENSITIVITY_EPOCHS`, `SENSITIVITY_EARLY_STOP_PATIENCE`, `USE_HDF5_CACHE`, and `AUTO_PREDICT_REGIONS` are also supported by `config.py`.
+Required tabular features are `B02`, `B03`, `B04`, `B08`, `NDWI`,
+`Blue_Green_LogRatio`, `Blue_Red_LogRatio`, and `Green_Red_LogRatio`.
+The command writes all five base predictions and the final convex combination,
+so the blend can be audited row by row.
 
-## Evaluation outputs
+## Photon classification inference
 
-Training writes the best checkpoint, epoch history, confusion matrix, pooled metrics, and per-file metrics under the configured output directory. The per-file export preserves the file identity so that pooled metrics, regional summaries, and paired track-level comparisons can be reproduced without treating photons from different tracks as independent experimental units.
+```bash
+python code/mskpconv/evaluate_mskpconv.py \
+  --checkpoint models/classification/mskpconv/mskpconv_best.pth \
+  --test-dir /path/to/test_csvs
+```
 
-## License and citation
+The exact train/validation/test file allocation is independent of the local
+data path and is recorded in `splits/photon_classification/files.csv` with file
+sizes, row counts, and SHA-256 hashes.
 
-Please cite the accompanying manuscript when using this implementation. Check the repository history and manuscript for the applicable license and citation details.
+## Full experiment
+
+The exact research workflow and configuration are under
+`code/ten_region_bathymetry/`. The archived configuration intentionally records
+the original drive paths and run settings. For a new machine, copy the YAML and
+change only `workspace_root`, `data_root`, `output_root`, and
+`model_output_root`; do not alter the seed, folds, spatial buffer, features, or
+model hyperparameters when reproducing the paper.
+
+```bash
+python code/ten_region_bathymetry/experiment_1_main/run.py qc --run-id RUN_ID
+python code/ten_region_bathymetry/experiment_1_main/run.py prepare --run-id RUN_ID
+python code/ten_region_bathymetry/experiment_1_main/run.py split --run-id RUN_ID
+python code/ten_region_bathymetry/experiment_1_main/run.py train --run-id RUN_ID
+python code/ten_region_bathymetry/experiment_1_main/run.py report --run-id RUN_ID
+```
+
+See `docs/REPRODUCIBILITY.md` for split provenance, weight provenance, and the
+limits of the public package.
