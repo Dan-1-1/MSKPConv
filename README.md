@@ -15,7 +15,9 @@ sum-to-one blend of five fitted regressors:
 
 The repository contains model code, inference entry points, trained
 classification weights, ConvexBlend metadata and small base-model weights, and
-the exact split indices used by the reported experiments. The complete final
+the 220 labeled ATL03 classification CSV files used in the experiments, 17
+preserved historical source/alias CSV files, four labeled `ATL24_Test` files,
+and the exact split indices used by the reported experiments. The complete final
 ConvexBlend bundle, including the 500 MiB random-forest checkpoint, is attached
 to GitHub Release `v2.0.0` because that file exceeds GitHub's 100 MiB regular
 file limit.
@@ -27,6 +29,8 @@ file limit.
 | Trained MSKPConv and classification-baseline weights | `models/classification/` |
 | Complete five-model ConvexBlend weights | GitHub Release `v2.0.0`; manifest in `models/WEIGHTS_MANIFEST.json` |
 | Photon classification inference | `code/mskpconv/evaluate_mskpconv.py` |
+| 220 experimental ATL03 CSV files and 17 preserved historical aliases | `data/Train/`, `data/Val/`, `data/Test/`; exact 220-file membership in `splits/photon_classification/files.csv` |
+| Four labeled ATL24 external-test CSV files | `data/ATL24_Test/` |
 | Five-model ConvexBlend inference | `code/ten_region_bathymetry/predict_convexblend.py` |
 | Exact classification file split | `splits/photon_classification/files.csv` |
 | Exact inversion row/fold assignments | `splits/convexblend/row_splits.parquet` |
@@ -76,7 +80,7 @@ so the blend can be audited row by row.
 ```bash
 python code/mskpconv/evaluate_mskpconv.py \
   --checkpoint models/classification/mskpconv/mskpconv_best.pth \
-  --test-dir /path/to/test_csvs
+  --test-dir data/Test
 ```
 
 The exact train/validation/test file allocation is independent of the local

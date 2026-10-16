@@ -5,8 +5,7 @@ __pycache__/
 .ipynb_checkpoints/
 catboost_info/
 
-# Raw remote-sensing inputs and generated outputs are not versioned here.
-data/
+# Generated outputs and large upstream raster products are not versioned here.
 outputs/
 results/**/*.tif
 results/**/*.png

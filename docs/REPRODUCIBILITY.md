@@ -45,9 +45,15 @@ file SHA-256 values. The downloader verifies the archive before extraction.
 
 ## Data availability boundary
 
-Raw ATL03/ATL24 products, Sentinel-2 imagery, DEM rasters, and derived
-full-scene GeoTIFFs are not duplicated in Git because they are large data
-products rather than source code or split indices. The released split artifacts
-identify the exact samples used. Users must obtain the underlying public remote
-sensing products from their original providers or contact the authors for the
-curated intermediate dataset.
+The repository includes the complete labeled photon-classification collection:
+170 training, 30 validation, and 20 test ATL03 CSV files under `data/`, plus
+four labeled external-test files under `data/ATL24_Test/`. The Train, Val, and
+Test folders additionally preserve 17 historical `subsetted` source/alias CSV
+files from the earlier repository. The split manifest provides independent
+filenames, row counts, sizes, and SHA-256 hashes that unambiguously identify the
+220 files used in the reported experiments.
+
+Upstream raw ATL03/ATL24 HDF5 products, Sentinel-2 imagery, DEM rasters, and
+derived full-scene GeoTIFFs are not duplicated in Git because they are large
+source products. Users must obtain those upstream products from their original
+providers when reproducing the complete remote-sensing preprocessing pipeline.

@@ -3,13 +3,13 @@ from pathlib import Path
 
 
 RELEASE_ROOT = Path(__file__).resolve().parents[2]
-DATA_ROOT = RELEASE_ROOT / "data" / "atl03_photon_classification"
+DATA_ROOT = RELEASE_ROOT / "data"
 
 
 class Config:
-    DATA_DIR = str(DATA_ROOT / "train")
-    VAL_DATA_DIR = str(DATA_ROOT / "validation")
-    TEST_DATA_DIR = str(DATA_ROOT / "test")
+    DATA_DIR = str(DATA_ROOT / "Train")
+    VAL_DATA_DIR = str(DATA_ROOT / "Val")
+    TEST_DATA_DIR = str(DATA_ROOT / "Test")
 
     MODEL_SAVE_DIR = str(RELEASE_ROOT / "models" / "classification" / "mskpconv")
     PREDICTION_SAVE_DIR = str(RELEASE_ROOT / "results" / "photon_classification")
